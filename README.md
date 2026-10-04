@@ -1,7 +1,7 @@
 # Prayer Wall
 
 A Flutter app concept for a gentle, faith-centered social space. The demo has local-only authentication and feed state so it can run without a backend.
-
+Anyone can add to a prayer wall, and anyone can pray for it
 ## Run
 
 ```bash
