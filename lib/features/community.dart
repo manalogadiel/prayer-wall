@@ -8,39 +8,25 @@ import 'wall/post_design.dart';
 
 const spaces = [
   (
-    'Peace in the waiting',
-    'Peace',
-    'A place for the seasons without easy answers.',
-    StickerKind.boat,
-    'blue'
-  ),
-  (
-    'Everyday gratitude',
-    'Gratitude',
-    'Ordinary days. Small gifts. Shared thanks.',
-    StickerKind.bread,
-    'butter'
-  ),
-  (
-    'Family & friends',
     'Family',
-    'Hold your people close, wherever they are.',
+    'Family',
+    'Pray with the people closest to you.',
     StickerKind.lamb,
     'mint'
   ),
   (
-    'New beginnings',
+    'Young People',
     'Hope',
-    'For courage, fresh starts, and the next step.',
+    'Growing in faith, together.',
     StickerKind.ark,
     'peach'
   ),
   (
-    'Light for the way',
-    'Hope',
-    'A little encouragement for the path ahead.',
-    StickerKind.lamp,
-    'lilac'
+    'School Friends',
+    'Peace',
+    'A space for your school community.',
+    StickerKind.boat,
+    'blue'
   ),
 ];
 
@@ -82,8 +68,6 @@ class _CommunityPageState extends ConsumerState<CommunityPage> {
                         const SizedBox(height: 12),
                         Text(e.$3),
                         const SizedBox(height: 12),
-                        const Text(
-                            'Sample space. Joining saves a preference on this device; it does not enroll you in a live community.'),
                         const SizedBox(height: 24),
                         ActionButton(
                             joined ? 'Leave my spaces' : 'Add to my spaces',
@@ -106,6 +90,7 @@ class _CommunityPageState extends ConsumerState<CommunityPage> {
   Widget build(BuildContext context) {
     final store = ref.watch(storeProvider);
     final s = Theme.of(context).colorScheme;
+
     final results = spaces
         .where((e) =>
             (!mine || store.joined.contains(e.$1)) &&
@@ -124,18 +109,10 @@ class _CommunityPageState extends ConsumerState<CommunityPage> {
               labelText: 'Search spaces',
               prefixIcon: Icon(CupertinoIcons.search))),
       const SizedBox(height: 16),
-      Wrap(spacing: 8, children: [
-        for (final v in [false, true])
-          ChoiceChip(
-              label: Text(v ? 'My spaces' : 'Discover'),
-              selected: mine == v,
-              onSelected: (_) => setState(() => mine = v),
-              labelStyle:
-                  TextStyle(color: mine == v ? s.onPrimary : s.onSurface))
-      ]),
-      const SizedBox(height: 12),
-      const Text('Sample communities. Your selections stay on this device.',
-          style: TextStyle(fontSize: 11)),
+      BibleTabs(
+          labels: const ['Discover', 'My spaces'],
+          index: mine ? 1 : 0,
+          onChanged: (i) => setState(() => mine = i == 1)),
       const SizedBox(height: 18),
       if (results.isEmpty)
         EmptyView(

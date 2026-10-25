@@ -39,6 +39,10 @@ colors:
   formal-dark: "#302C40"
   wall: "#DDECE0"
   wall-dark: "#293C33"
+  prayer-blush: "#F5D3CC"
+  prayer-lavender: "#E7DFF5"
+  prayer-sand: "#F1E8D8"
+  sticky-tape: "#C6A56B"
 typography:
   headline-large:
     fontFamily: "Outfit, sans-serif"
@@ -89,6 +93,7 @@ rounded:
   surface: "24px"
   dialog: "28px"
   navigation: "34px"
+  page-tab-top: "12px"
 spacing:
   xs: "4px"
   sm: "8px"
@@ -132,6 +137,10 @@ components:
   navigation-dock:
     backgroundColor: "{colors.dock}"
     height: "64px"
+  page-tab-selected:
+    backgroundColor: "{colors.butter}"
+    textColor: "{colors.ink}"
+    padding: "14px 18px"
   create-control:
     backgroundColor: "{colors.create}"
     textColor: "{colors.create-ink}"
@@ -166,6 +175,7 @@ Content pastels distinguish subjects while neutral controls and ink keep writing
 
 - **Lilac, Reflection Blue, Gratitude Butter, Community Mint, Peach:** topic and community fills; butter also distinguishes sticky notes.
 - **Paper, Formal, Wall:** material-specific writing surfaces, each with a dark counterpart.
+- **Prayer Blush, Prayer Lavender, Prayer Sand:** explicit post color choices alongside butter, blue and mint. These retain pastel fills in dark mode; their live text uses primary charcoal. Sticky Tape is the warm translucent material overlay, never a text color.
 
 ### Neutral
 
@@ -173,9 +183,9 @@ Content pastels distinguish subjects while neutral controls and ink keep writing
 - **Ink / Muted:** content and secondary supporting text.
 - **Field:** filled form controls; neutral primary focus strokes remain functional feedback.
 
-**The Colorful Content Rule.** Keep essential controls monochrome; preserve topical, community and post-material color.
+**The Colorful Content Rule.** Keep essential actions monochrome; preserve topical, community and post-material color. Bible-inspired page tabs use the butter selected fill as an established selection exception.
 
-**The Readable Material Rule.** Match each material to its theme-specific fill and current theme ink; decoration must yield to readable live text.
+**The Readable Material Rule.** Default materials follow theme-specific fill and ink. An explicit curated pastel overrides material fill and uses dark charcoal ink in both themes; decoration must yield to readable live text.
 
 ## Typography
 
@@ -188,7 +198,7 @@ Avoid inventing an extra display typeface or handwritten control labels. Small m
 
 ## Layout
 
-The Flutter values map to logical pixels. The shared spacing rhythm is recorded in frontmatter; ordinary surfaces use 20px padding. Phone content gutters are 20px. At 1000px the shell replaces bottom navigation with a 220px rail. Wall reading width is capped at 680px, Community at 940px, and other surfaces at 1000px. Community becomes two columns when its available width reaches 700px, with 16px gaps.
+The Flutter values map to logical pixels. The shared spacing rhythm is recorded in frontmatter; ordinary surfaces use 20px padding. Phone content gutters are 20px. At 1000px the shell replaces bottom navigation with a 220px rail. Wall reading width is capped at 680px, Community at 940px, and other surfaces at 1000px. Community becomes two columns when its available width reaches 700px, with 16px gaps. The composer sheet uses 80% of viewport height inside SafeArea, a scrollable editor and a pinned bottom action area with keyboard insets. Wall category scrolling extends 20px into each horizontal page gutter; the resting tile content retains its inset.
 
 SafeArea protects native controls. The status-bar overlay requests the actual scaffold canvas; the navigation bar remains transparent, with contrast enforcement disabled in source. Android edge-to-edge behavior still requires native evidence. Web viewport-fit, theme metadata, CSS ground and runtime theme synchronization match the canvas. This source treatment still requires native Android capture verification.
 
@@ -196,7 +206,7 @@ The wall surface composition and screen hierarchy belong in `.impeccable/surface
 
 ## Elevation & Depth
 
-Use tonal layering by default. Shared Surface and Community cards have no shadows or decorative strokes. Essential gradient ActionButtons use a soft black ambient shadow (9% alpha, offset 0/3, blur 10). The raised create circle uses Flutter elevation 2; the notched BottomAppBar uses its theme defaults rather than the retired capsule shadow. Sticky material alone uses a butter-tinted shadow (30% alpha, offset 0/7, blur 18), tape and fold; these material cues are appropriate to the owner's requested post styles.
+Use tonal layering by default. Shared Surface and Community cards have no shadows or decorative strokes. Essential gradient ActionButtons use a soft black ambient shadow (9% alpha, offset 0/3, blur 10). The raised create circle uses Flutter elevation 2; the notched BottomAppBar uses its theme defaults rather than the retired capsule shadow. Page tabs use a small ambient shadow (4% black, offset 0/2, blur 3). Sticky material uses a butter-tinted shadow (30% alpha, offset 0/7, blur 18), tape and fold; these material cues are appropriate to the owner's requested post styles.
 
 **The Material Depth Rule.** Keep depth local to its role: subtle action lift or sticky-paper tactility, never a hard offset shadow applied to every card.
 
@@ -214,9 +224,13 @@ Filled, direct and responsive. ActionButton uses a warm off-white vertical gradi
 
 Borderless stadium selection, surface at rest and primary when selected. Selected labels use on-primary. Tags use topical tint, 10px horizontal and 5px vertical padding, and 12px semibold text. Use semantic selected state alongside color.
 
+### Bible-inspired page tabs
+
+Attached page-index silhouettes with top corners (12px) and square bottoms replace detached pill switches on Community, Prayers and composer selection groups. Wrap spacing is 3px with 4px between runs; inactive tabs start 5px lower. Each has at least 48px height and 18px horizontal / 14px vertical padding. Selected uses theme butter and 700 weight, inactive uses surface and 500 weight; both use theme ink and semantic selection. The shared Pressable provides activation feedback.
+
 ### Cards / Containers
 
-Shared surfaces are borderless, filled and padded. Post author and actions stay outside the decorated writing material. Paper uses faint ruled lines; Wall uses low-opacity masonry geometry; Formal centers its title in an inset editorial arrangement; Normal uses the neutral surface. The optional foreground sticker stays beside the footer; background stickers use low opacity (16% light, 13% dark).
+Shared surfaces are borderless, filled and padded. Post author and actions stay outside the decorated writing material. Sticky tape is 76×24px at top -6px, rotated -.05rad, with sticky-tape at 75% opacity; retain the stronger contrast rather than a barely visible cream strip. Paper uses faint ruled lines; Wall uses low-opacity masonry geometry; Formal centers its title in an inset editorial arrangement; Normal uses the neutral surface. The optional foreground sticker stays beside the footer; background stickers use low opacity (16% light, 13% dark).
 
 ### Inputs / Fields
 
@@ -224,11 +238,11 @@ Filled, gently rounded, and unbordered at rest. The focused input has a 2px prim
 
 ### Navigation
 
-Four destinations: Wall, Community, Prayers, Profile. Mobile uses one local-coordinate Stack: a 64px black rounded dock positioned 28px below its top, with a 56px raised off-white Create post circle centered on that dock edge. A DockClipper computes a 68px circular notch at local width/2 (6px clearance) and a 72px center gap holds the destinations apart. White selected icons and a 4px dot distinguish selection; inactive icons use dock-muted. Mobile names are available through semantics and tooltips rather than visible text labels. Desktop keeps visible labels and a neutral selected field on its rail. Settings is accessible only in Profile. The Wall header avatar opens Profile; the approved dove is the fallback when no optional device-local photo is set. Selection icons lift, tilt and scale once within 240ms; keyboard activation is immediate and reduced motion removes transforms. No looping animation.
+Four destinations: Wall, Community, Prayers, Profile. Mobile uses one local-coordinate Stack: a 64px black rounded dock positioned 28px below its top, with a 56px raised off-white Create post circle centered on that dock edge. A DockClipper computes a 68px circular notch at local width/2 (6px clearance) and a 72px center gap holds the destinations apart. White selected icons and a 4px dot distinguish selection; inactive icons use dock-muted. Mobile names are available through semantics and tooltips rather than visible text labels. Desktop keeps visible labels and a neutral selected field on its rail. Settings is accessible only in Profile. The Wall header avatar opens Profile; the approved dove is the fallback when no optional device-local photo is set. Selection icons rotate up to .12rad and scale up to 1.12 once within 240ms, with zero vertical translation; keyboard activation is immediate and reduced motion removes transforms. No looping animation.
 
 ### Profile identity
 
-Profile starts with avatar, editable name and optional bio; Today / Journal / Saved follow. The editor uses the shared filled fields and monochrome save action. Circular photos use cover fit with the approved dove as decoding/no-photo fallback. Name (60 characters), bio (160) and optional photo remain device-local; failed saves retain the editor.
+Profile starts with a compact horizontal identity row: avatar left, editable name and optional bio right. Prayer partners and Fellowship open honest empty connection sheets; Today / Journal / Saved follow. No follower counts, fake accounts or successful connection claims are shown. The editor uses the shared filled fields and monochrome save action. Circular photos use cover fit with the approved dove as decoding/no-photo fallback. Name (60 characters), bio (160) and optional photo remain device-local; failed saves retain the editor.
 
 ### Biblical artwork
 
@@ -246,7 +260,7 @@ Keep the approved dove master. Boat, bread/fish, journal, lamp, lamb and ark are
 ### Don't:
 - **Don't** add decorative borders to cards or buttons.
 - **Don't** replace the approved identity with toy renders or historical candidate mascots.
-- **Don't** turn a local sample interaction into a claim of public publication or membership.
+- **Don't** imply that the Public audience selection uploads content or that local community preferences establish real membership.
 - **Don't** use continuous icon loops or pretend a static PNG is an articulated character.
 
 Not canonized: compact 11px category/metadata exceptions need future device readability review; the Formal preface was removed in the final manual edit; do not reintroduce it as a reusable eyebrow. Missing Android visual evidence is a verification gap, not a design token.

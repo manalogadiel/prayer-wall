@@ -1,20 +1,17 @@
 # Prayer Wall — start here
 
-This source package contains the implemented Flutter social wall, local prayer/journal/profile experience, original biblical artwork, eighteen reference/confirmation/bug screenshots, tests, Android widget source and portable plan.
+This Flutter source package contains the local prayer wall, private prayer/journal/profile experience, original biblical art, Android widget source, retained references and current implementation plan.
 
-1. Read PRODUCT.md and DESIGN.md for current product truth and normative implemented tokens. .impeccable/design.json carries extensions, .impeccable/surfaces/social-wall.md this surface.
-2. Read docs/MASTER_PLAN.md (version 1.5) and docs/IMPLEMENTATION_STATUS.md for canonical scope, evidence and remaining work.
-3. Read docs/UI-SOCIAL-REVAMP-DELIVERY.md and docs/superpowers/plans/2026-10-25-monochrome-profile-refinement.md. Earlier social-wall spec/plan remain baseline context where consistent.
-4. Open docs/REFERENCE_INDEX.md for all eighteen images. References 13–18 establish current refinement; 08 locks the Option A dove. Historical sheep/toy candidates are not the active identity.
-5. Consult design/asset-manifest.json, design/prompts/ and embedded PNG metadata before extending art. Optional character motion is separate in docs/MOTION_HANDOFF.md.
+1. Read PRODUCT.md and DESIGN.md for current behavior and normative implemented visual tokens; .impeccable/design.json extends the system and .impeccable/surfaces/social-wall.md describes this surface.
+2. Read docs/MASTER_PLAN.md (version 1.6) and docs/IMPLEMENTATION_STATUS.md for canonical scope, current evidence and remaining work.
+3. Read docs/superpowers/plans/2026-10-25-issues-implementation.md, docs/issues/2026-10-25/Issues.docx and extracted images 1–10 for the latest request. docs/UI-SOCIAL-REVAMP-DELIVERY.md records the cumulative delivery.
+4. docs/REFERENCE_INDEX.md covers earlier owner reference/confirmation/bug screenshots. Reference 08 locks the Option A dove; historical toy/sheep candidates are not active identity.
+5. Consult design/asset-manifest.json, design/prompts/ and PNG provenance before extending art. Optional character motion is separate in docs/MOTION_HANDOFF.md.
 
-Wall / Community / Prayers / Profile are primary; Wall launches first. Monochrome neutral/off-white essential actions support colorful content. Black notched mobile dock has a raised white central create circle. Each Prayer categories tile has one illustration. Header avatar opens Profile, with optional device-local photo or dove fallback. Profile starts with editable name/bio/photo; Today/Journal/Saved follow. Settings is available only in Profile. Preserve private data and stable IDs; do not recreate the retired dashboard.
+Wall launches first. Community contains Family / Young People / School Friends. Bible-inspired attached tabs replace pill switches. Profile places avatar left and name right, offers Prayer partners / Fellowship empty sheets, then Today / Journal / Saved. Settings appears only here. Keep the shared-coordinate black notched dock and white Create circle; icons rotate/scale without vertical bounce.
 
-Owner authorized auto-plan/execute without questions. This does not authorize public publication, GitHub push or external messaging. App stays Prayer Wall; Ollie remains a proposed mascot name.
+Publish saves on this device. Public/private is persisted audience intent, not a connected backend. The owner requested removing repeated sample/local UI labels and keeping the limitation in Settings. Preserve stable IDs, local data, expiry/archive/linkage semantics and recoverable failed saves. Do not rebuild the retired dashboard.
 
-Run with compatible Flutter SDK: flutter pub get, flutter test, flutter run. Current verification: 16 tests pass, analysis clean. Final status-overlay correction web release passed (115.4 seconds); browser review is SHIP within the four supplied Chrome views. Current Android APK attempt failed on a Google-host dependency download. Earlier debug APK success predates this refinement. See current status before claiming a build/capture completed. Machine SDK/caches, generated builds and Git metadata are excluded from source-only archives.
+Run with a compatible Flutter SDK: flutter pub get, flutter test, flutter run. Final verification passed: 18 tests, zero analyzer issues, release web build (60.8s) and debug Android APK build (39.3s). Independent browser visual and sampled-source review is SHIP within the seven valid Issues captures, with no material fixes; see .impeccable/review/issues-finish-review.md. Check IMPLEMENTATION_STATUS.md before extending these claims to native runtime. Prior browser reviews are historical and scoped to their captures. ADB currently has no device; current native install/visual/widget acceptance is unverified.
 
-Current browser captures are retained in design/proofs/monochrome-refinement/; older proof remains in design/proofs/social-revamp/. Native finish review remains recapture because no Android phone/AVD capture exists. Native system bars/insets, keyboard, photo picker and widget lifecycle require device testing. Original external phone frame was not verified because Computer Use stopped on Chrome URL verification failure. Browser review and native acceptance remain separate.
-
-
-Latest device delivery (2026-10-25): current debug APK build passed (58.6s) and ADB replacement install succeeded on Samsung SM-A326B, user 0. Prior dependency-download failure is historical. Native visual/widget acceptance remains separate and unverified.
+Source-only archives must exclude SDK/caches, generated build output and Git metadata. Refresh archives after final source, documentation and verification; earlier archives predate the Issues milestone unless separately rebuilt. Machine-local previews are not portable. No public deployment, GitHub push or external messaging is authorized.

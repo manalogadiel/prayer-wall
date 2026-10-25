@@ -1,32 +1,25 @@
-# Social wall and focused refinement delivery
+# Social wall delivery — Issues milestone
 
-Updated locally: 2026-10-25. Current plan version 1.5. Owner authorized auto-plan/execute without questions. This record covers the current source; browser finish review is SHIP within four Chrome views and native Android acceptance remains recapture.
+Updated 2026-10-25. Plan version 1.6. Latest plan: docs/superpowers/plans/2026-10-25-issues-implementation.md. Original owner evidence: docs/issues/2026-10-25/Issues.docx and ten extracted images. Earlier reference art, plans, captures and review reports remain historical context.
 
 ## Current behavior
 
-Wall launches first. Wall / Community / Prayers / Profile remain the primary destinations. Mobile navigation is a black rounded notched dock with a raised white central Create post circle; desktop retains its rail. Essential actions are neutral/off-white, while category/community/post material color remains. Prayer categories explicitly labels the single-art topic tiles.
+Wall / Community / Prayers / Profile remain primary and Wall launches first. Monochrome essential actions, Outfit/DM Sans, the approved Option A dove and original biblical art remain. The black notched mobile dock and raised white Create circle share local coordinates. Navigation icons rotate and scale once without vertical bounce. Wall category scrolling extends into both horizontal gutters.
 
-The header avatar opens Profile. Approved Option A dove is the no-photo fallback. Profile begins with editable name, bio and optional photo, then Today / Journal / Saved. Settings is available only in Profile. Profile uses queued `profile_v1` storage; name/bio/photo stay on this device, failed input is recoverable, and JSON export schemaVersion 4 includes them. Official Flutter image_picker 1.2.4 handles optional selection; no upload/account backend is connected.
+Bible-inspired attached page tabs replace detached pill switches in Community, Prayers and composer controls. Selected tabs use theme butter; inactive tabs start lower. Community contains Family, Young People and School Friends, searchable Discover / My spaces, tall arch artwork and device-local selections.
 
-Preserved social wall: five materials, local composer/preview/stickers, stable-ID post CRUD, saved/prayed persistence, truthful local/sample audience labels. Community remains searchable, colorful, straight-edged with tall arch art and local My spaces preferences. Private prayers, journal migration/CRUD, explicit Answered versus daily completion and Android widget source remain.
+Profile places avatar left and editable name/bio right; Prayer partners and Fellowship open honest empty connection sheets, followed by Today / Journal / Saved. No fake connection counts or accounts. Optional local photo and dove fallback remain. Settings is only here and explains the missing public backend. Repeated sample/local labels were removed from feed, composer and communities at the owner's request.
 
-Dark app canvas is #262626; theme primary is #25262B light / #F0EFEA dark, and dark surfaces are #303034. Owned launch/CSS/metadata/browser bridge and status overlay request matched canvas; SafeArea and Android edge-to-edge remain. Source does not prove native top-strip closure. Original external phone frame was not verified: Computer Use stopped because Chrome URL verification failed.
+The composer is 80% viewport height, scrolls above a pinned Publish / Save changes footer, and follows keyboard insets. Topic follows title/body; material is immediately above Preview. Five writing materials, optional biblical sticker placement and live preview remain; curated pastel fills use dark charcoal live text even in dark theme. Sticky tape is stronger.
+
+Public is the default persisted audience choice; Private remains available. Publish still saves on this device. Expiry offers day, week, clamped calendar month, specific date or infinite; archive/restore are implemented. Stable post/prayer linkage keeps prayer titles current without duplicate entries; plus adds other posts to the prayer list. Archive removes widget inclusion; restore clears expiry and leaves re-pinning explicit. Daily completion and Answered remain independent.
 
 ## Evidence and limits
 
-Analysis is clean and all 16 tests passed. Final status-overlay correction web release passed (115.4 seconds). Current Android APK attempt failed downloading androidx.collection:collection-ktx:1.4.2 because Google host/network was unavailable. Earlier successful debug APK evidence predates this refinement; do not call the current APK built.
+Final verification passed: 18 tests, zero analyzer issues, release web build (60.8s) and debug Android APK build (39.3s). Independent browser visual and sampled-source review is SHIP within the seven valid Issues captures, with no material fixes; see .impeccable/review/issues-finish-review.md. Consult docs/IMPLEMENTATION_STATUS.md. Older 16-test refinement and 17-test dock results, Chrome SHIP reviews and Samsung replacement install predate this milestone. Preserve those reports rather than extending their scope. ADB currently lists no device; current native install, captures, keyboard, photo picker and widget lifecycle acceptance remain open. Seven fresh browser captures are retained as .impeccable/review/issues-*.png. Independent final browser review is pending; these remain browser evidence only.
 
-Runtime confirmation: all three dark theme-color metadata entries are #262626; accessible navigation names are exactly Wall / Community / Prayers / Profile. Keyboard-edited name Alex and bio survived save/reload. A separate browser file-chooser check verified photo selection/save/reload/revert to dove. Native picker acceptance is still open.
-
-Current browser captures are retained as `.impeccable/review/refinement-{mobile-dark,mobile-light,profile-dark,desktop-light}.png`, with copies in `design/proofs/monochrome-refinement/`. Fresh independent browser review in `.impeccable/review/refinement-finish-review.md` is **SHIP**, scoped to these four Chrome views with no material fixes. This is not native acceptance.
-
-Older `design/proofs/social-revamp/` captures and `.impeccable/review/chrome-supplement.md` remain historical browser/source evidence. Independent `.impeccable/review/finish-review.md` remains **recapture** because required Android capture is absent. No connected phone/AVD, native screenshot, launcher widget lifecycle or native picker acceptance is claimed. A browser-only review cannot resolve native acceptance.
+No backend/auth/cloud sync/moderation/comments/push or articulated character rig was added. Existing storage formats and IDs are retained with additive audience/color/expiry/archive/link fields. Current archives must be refreshed after final code/docs/review before claiming this milestone is portable.
 
 ## Handoff
 
-Read START_HERE.md, PRODUCT.md, DESIGN.md, docs/MASTER_PLAN.md, docs/IMPLEMENTATION_STATUS.md and docs/REFERENCE_INDEX.md. Latest plan: `docs/superpowers/plans/2026-10-25-monochrome-profile-refinement.md`. References 13–18 record the current request, 08 locks the dove, and earlier social spec/plan preserve baseline context. DESIGN frontmatter is normative; .impeccable/design.json extends it and .impeccable/surfaces/social-wall.md records this surface.
-
-No public backend/auth/comments/moderation/push/cloud sync, release signing, public deployment or articulated character rig was added. Native capture/widget testing and dependency/build retry are next; public release work is a separate milestone. Source-only archives are refreshed separately after final documentation and reviewer updates.
-
-
-Latest device delivery (2026-10-25): current debug APK build passed (58.6s) and ADB replacement install succeeded on Samsung SM-A326B, user 0. Prior dependency-download failure is historical. Native visual/widget acceptance remains separate and unverified.
+Read START_HERE.md, PRODUCT.md, DESIGN.md, .impeccable/design.json, .impeccable/surfaces/social-wall.md, docs/MASTER_PLAN.md and docs/IMPLEMENTATION_STATUS.md. Reference 08 locks dove identity. Do not regenerate platforms or replace the retired dashboard. No public deployment, GitHub push or external messaging is authorized.

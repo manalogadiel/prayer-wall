@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-25T02:26:45.934457+00:00",
+  "generatedAt": "2026-10-25T13:05:27.170385+08:00",
   "title": "Design System: Prayer Wall",
   "extensions": {
     "colorMeta": {
@@ -521,6 +521,22 @@
           "oklch(84% 0 0)",
           "oklch(95% 0 0)"
         ]
+      },
+      "prayer-blush": {
+        "role": "secondary",
+        "displayName": "Prayer Blush"
+      },
+      "prayer-lavender": {
+        "role": "secondary",
+        "displayName": "Prayer Lavender"
+      },
+      "prayer-sand": {
+        "role": "secondary",
+        "displayName": "Prayer Sand"
+      },
+      "sticky-tape": {
+        "role": "secondary",
+        "displayName": "Sticky Tape"
       }
     },
     "typographyMeta": {
@@ -548,6 +564,11 @@
         "name": "sticky-material",
         "value": "0 7px 18px rgba(247,222,160,0.3)",
         "purpose": "Light-theme sticky material only; dark uses its butter counterpart."
+      },
+      {
+        "name": "page-tab-ambient",
+        "value": "0 2px 3px rgba(0,0,0,0.04)",
+        "purpose": "Bible-inspired page-index tabs only."
       }
     ],
     "motion": [
@@ -563,7 +584,7 @@
       },
       {
         "name": "icon-feedback",
-        "value": "240ms; one sine pulse; lift 2px, rotate .12rad, scale 1.12",
+        "value": "240ms; one sine pulse; rotate .12rad, scale 1.12; zero vertical translation",
         "purpose": "Selected state only; immediate for keyboard and reduced motion."
       }
     ],
@@ -636,6 +657,14 @@
       "description": "Central circular Create post action, placed in the mobile dock notch by Flutter.",
       "html": "<button class=\"ds-create\" aria-label=\"Create post\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 4v16M4 12h16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button>",
       "css": ".ds-create{display:grid;place-items:center;width:56px;height:56px;border:0;border-radius:50%;background:#F9F9F3;color:#17181C;box-shadow:0 2px 4px #0003;transition:transform .18s ease}.ds-create:hover{filter:brightness(.97)}.ds-create:focus-visible{outline:2px solid #25262B;outline-offset:3px}.ds-create:active{transform:scale(.97)}@media(prefers-reduced-motion:reduce){.ds-create{transition:none}.ds-create:active{transform:none}}"
+    },
+    {
+      "name": "Bible-inspired page tabs",
+      "kind": "nav",
+      "refersTo": "page-tab-selected",
+      "description": "Attached page-index selection; light-theme translation. Flutter applies corresponding theme butter/surface/ink in dark mode.",
+      "html": "<nav class=\"ds-tabs\" aria-label=\"Prayer status\"><button class=\"ds-tab\" aria-pressed=\"true\">Active</button><button class=\"ds-tab\" aria-pressed=\"false\">Answered</button><button class=\"ds-tab\" aria-pressed=\"false\">Archive</button></nav>",
+      "css": ".ds-tabs{display:flex;flex-wrap:wrap;gap:4px 3px;align-items:flex-start}.ds-tab{min-height:48px;padding:14px 18px;border:0;border-radius:12px 12px 0 0;background:#fff;color:#191B24;font:500 14px/1.4 \"DM Sans\",sans-serif;margin-top:5px;box-shadow:0 2px 3px #0000000a;transition:transform .18s ease}.ds-tab[aria-pressed=\"true\"]{margin-top:0;background:#F7DEA0;font-weight:700}.ds-tab:hover{filter:brightness(.97)}.ds-tab:focus-visible{outline:2px solid #25262B;outline-offset:2px}.ds-tab:active{transform:scale(.97)}@media(prefers-reduced-motion:reduce){.ds-tab{transition:none}.ds-tab:active{transform:none}}"
     }
   ],
   "narrative": {
@@ -650,12 +679,12 @@
     "rules": [
       {
         "name": "The Colorful Content Rule",
-        "body": "Keep essential controls monochrome; preserve topical, community and post-material color.",
+        "body": "Keep essential actions monochrome; preserve topical, community and post-material color. Bible-inspired page tabs use the butter selected fill as an established selection exception.",
         "section": "colors"
       },
       {
         "name": "The Readable Material Rule",
-        "body": "Match each material to its theme-specific fill and current theme ink; decoration must yield to readable live text.",
+        "body": "Default materials follow theme-specific fill and ink. An explicit curated pastel overrides material fill and uses dark charcoal ink in both themes; decoration must yield to readable live text.",
         "section": "colors"
       },
       {
@@ -674,7 +703,7 @@
     "donts": [
       "**Don't** add decorative borders to cards or buttons.",
       "**Don't** replace the approved identity with toy renders or historical candidate mascots.",
-      "**Don't** turn a local sample interaction into a claim of public publication or membership.",
+      "**Don't** imply that the Public audience selection uploads content or that local community preferences establish real membership.",
       "**Don't** use continuous icon loops or pretend a static PNG is an articulated character."
     ]
   }

@@ -13,7 +13,11 @@ class WallPost {
       this.sticker = StickerKind.dove,
       this.backgroundSticker = false,
       this.local = false,
-      this.createdAt})
+      this.createdAt,
+      this.isPublic = true,
+      this.archived = false,
+      this.expiresAt,
+      this.colorValue})
       : id = id ?? title.toLowerCase().replaceAll(RegExp('[^a-z0-9]+'), '-'),
         count = baseCount + (prayed ? 1 : 0);
   final String id, name, initials, topic, title, body;
@@ -21,6 +25,11 @@ class WallPost {
   final bool answered, backgroundSticker, local;
   final PostDesign design;
   final StickerKind sticker;
+  final bool isPublic, archived;
+  final int? colorValue;
+  final DateTime? expiresAt;
+  bool get visible =>
+      !archived && (expiresAt == null || expiresAt!.isAfter(DateTime.now()));
   final DateTime? createdAt;
   int count;
   bool prayed, saved;
@@ -30,7 +39,12 @@ class WallPost {
           required String topic,
           required PostDesign design,
           required StickerKind sticker,
-          required bool backgroundSticker}) =>
+          required bool backgroundSticker,
+          bool? isPublic,
+          bool? archived,
+          int? colorValue,
+          DateTime? expiresAt,
+          bool clearExpiry = false}) =>
       WallPost(name, initials, topic, title, body, baseCount,
           id: id,
           answered: answered,
@@ -40,8 +54,16 @@ class WallPost {
           sticker: sticker,
           backgroundSticker: backgroundSticker,
           local: local,
-          createdAt: createdAt);
+          createdAt: createdAt,
+          isPublic: isPublic ?? this.isPublic,
+          archived: archived ?? this.archived,
+          colorValue: colorValue ?? this.colorValue,
+          expiresAt: clearExpiry ? null : (expiresAt ?? this.expiresAt));
   Map<String, dynamic> toJson() => {
+        'isPublic': isPublic,
+        'archived': archived,
+        'colorValue': colorValue,
+        'expiresAt': expiresAt?.toIso8601String(),
         'id': id,
         'name': name,
         'initials': initials,
@@ -70,6 +92,10 @@ class WallPost {
       sticker: StickerKind.values.firstWhere((v) => v.name == j['sticker'],
           orElse: () => StickerKind.none),
       backgroundSticker: j['backgroundSticker'] as bool? ?? false,
+      isPublic: j['isPublic'] as bool? ?? true,
+      archived: j['archived'] as bool? ?? false,
+      colorValue: j['colorValue'] as int?,
+      expiresAt: DateTime.tryParse(j['expiresAt'] as String? ?? ''),
       local: true,
       createdAt: DateTime.tryParse(j['createdAt'] as String? ?? ''));
 }

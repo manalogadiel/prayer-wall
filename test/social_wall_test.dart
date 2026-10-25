@@ -113,23 +113,24 @@ void main() {
         (w) => w is TextField && w.decoration?.labelText == 'Your prayer');
     await tester.enterText(title, 'A new beginning');
     await tester.enterText(body, 'Praying for courage for the next step.');
-    final paper = find.widgetWithText(ChoiceChip, 'Paper');
+    final paper = find.text('Paper');
     await tester.ensureVisible(paper);
     await tester.tap(paper);
     await tester.pumpAndSettle();
-    final background = find.widgetWithText(ChoiceChip, 'Background');
+    final background = find.text('Background');
     await tester.ensureVisible(background);
     await tester.tap(background);
     await tester.pumpAndSettle();
     final store =
         ProviderScope.containerOf(tester.element(find.byType(PostComposer)))
             .read(storeProvider);
-    await tester.tap(find.text('Save to my wall'));
+    await tester.tap(find.text('Publish'));
     await tester.pumpAndSettle();
     expect(store.localPosts.single.title, 'A new beginning');
     expect(store.localPosts.single.design, PostDesign.paper);
     expect(store.localPosts.single.backgroundSticker, true);
-    expect(find.text('Only on this device'), findsOneWidget);
+    expect(store.prayers.single.id, store.localPosts.single.id);
+    expect(store.localPosts.single.isPublic, true);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());
     debugDefaultTargetPlatformOverride = null;
@@ -147,7 +148,7 @@ void main() {
     await tester.enterText(find.byType(TextField), 'Peace');
     await tester.pumpAndSettle();
     expect(find.text('Everyday gratitude'), findsNothing);
-    await tester.tap(find.text('Peace in the waiting'));
+    await tester.tap(find.text('School Friends'));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('Add to my spaces'));
     await tester.tap(find.text('Add to my spaces'));
@@ -156,5 +157,56 @@ void main() {
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());
     debugDefaultTargetPlatformOverride = null;
+  });
+  test('Visibility, color, expiry, archive and linked prayers persist safely',
+      () async {
+    final store = PrayerStore();
+    await store.load();
+    final now = DateTime.now();
+    final private = WallPost(
+        'You', 'Y', 'Hope', 'Private hope', 'A private prayer.', 0,
+        id: 'private',
+        local: true,
+        isPublic: false,
+        colorValue: 0xFFD5E8FB,
+        expiresAt: now.add(const Duration(days: 7)));
+    expect(await store.savePost(private), true);
+    expect(store.prayers.single.id, private.id);
+    expect(store.publicFeed.any((p) => p.id == private.id), false);
+    expect(await store.savePost(private), true);
+    expect(store.prayers.length, 1);
+    final public = private.edit(
+        title: 'Public hope',
+        body: private.body,
+        topic: private.topic,
+        design: private.design,
+        sticker: private.sticker,
+        backgroundSticker: false,
+        isPublic: true);
+    expect(await store.savePost(public), true);
+    expect(store.prayers.single.title, 'Public hope');
+    expect(store.publicFeed.any((p) => p.id == private.id), true);
+    final restored = PrayerStore();
+    await restored.load();
+    expect(restored.localPosts.single.colorValue, 0xFFD5E8FB);
+    expect(restored.localPosts.single.expiresAt, private.expiresAt);
+    expect(await restored.archivePost(restored.localPosts.single, true), true);
+    expect(restored.publicFeed.any((p) => p.id == private.id), false);
+    expect(await restored.archivePost(restored.localPosts.single, false), true);
+    expect(restored.localPosts.single.expiresAt, isNull);
+    expect(restored.localPosts.single.visible, true);
+    final expired = WallPost('You', 'Y', 'Hope', 'Old hope', 'Kept safely.', 0,
+        id: 'expired',
+        local: true,
+        expiresAt: now.subtract(const Duration(days: 1)));
+    await restored.savePost(expired);
+    expect(restored.publicFeed.any((p) => p.id == 'expired'), false);
+    expect(restored.prayers.any((p) => p.id == 'expired'), true);
+    final other = restored.posts.first;
+    await restored.addPostToPrayers(other);
+    await restored.addPostToPrayers(other);
+    expect(restored.prayers.where((p) => p.id == other.id).length, 1);
+    store.dispose();
+    restored.dispose();
   });
 }

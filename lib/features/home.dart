@@ -25,6 +25,7 @@ class _HomePageState extends ConsumerState<HomePage>
     with WidgetsBindingObserver {
   int page = 0;
   bool answered = false;
+  int prayerTab = 0;
   String filter = 'Everyone';
   Timer? dayTimer;
   static const labels = ['Wall', 'Community', 'Prayers', 'Profile'];
@@ -105,7 +106,7 @@ class _HomePageState extends ConsumerState<HomePage>
         ref.read(storeProvider).prayers.where((p) => !p.answered && !p.done);
     if (prayers.isEmpty) {
       if (ref.read(storeProvider).prayers.where((p) => !p.answered).isEmpty) {
-        compose();
+        openPostComposer(context);
       } else {
         message(
             'You’ve prayed through your list today. There’s room to return anytime.');
@@ -174,7 +175,7 @@ class _HomePageState extends ConsumerState<HomePage>
                               style: Theme.of(c).textTheme.titleMedium),
                           const SizedBox(height: 8),
                           const Text(
-                              'Personal prayers and reflections are saved on this device. They are not uploaded. Uninstalling the app may remove them. Community posts and circles are samples; no account is connected.'),
+                              'Public visibility is saved locally in this preview. Online publishing, prayer partners and fellowship require a connected account service. Your prayers and photos stay on this device.'),
                           const SizedBox(height: 16),
                           ActionButton('Copy my data',
                               secondary: true,
@@ -369,14 +370,31 @@ class _HomePageState extends ConsumerState<HomePage>
         Surface(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ProfileAvatar(photo: store.profilePhoto, size: 88),
-          const SizedBox(height: 18),
-          Text(store.profileName.isEmpty ? 'Your name' : store.profileName,
-              style: Theme.of(context).textTheme.headlineMedium),
-          const SizedBox(height: 8),
-          Text(store.profileBio.isEmpty
-              ? 'Your prayers, reflections, and things to return to.'
-              : store.profileBio),
+          Row(children: [
+            ProfileAvatar(photo: store.profilePhoto, size: 80),
+            const SizedBox(width: 16),
+            Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                  Text(
+                      store.profileName.isEmpty
+                          ? 'Your name'
+                          : store.profileName,
+                      style: Theme.of(context).textTheme.headlineSmall),
+                  const SizedBox(height: 6),
+                  if (store.profileBio.isNotEmpty) Text(store.profileBio),
+                ]))
+          ]),
+          const SizedBox(height: 16),
+          Wrap(spacing: 12, children: [
+            TextButton(
+                onPressed: () => connectionSheet('Prayer partners'),
+                child: const Text('Prayer partners')),
+            TextButton(
+                onPressed: () => connectionSheet('Fellowship'),
+                child: const Text('Fellowship'))
+          ]),
           const SizedBox(height: 18),
           ActionButton('Edit profile',
               icon: CupertinoIcons.pencil,
@@ -398,6 +416,22 @@ class _HomePageState extends ConsumerState<HomePage>
         else
           const WallFeed(savedOnly: true),
       ]);
+
+  void connectionSheet(String title) => showModalBottomSheet<void>(
+      context: context,
+      builder: (c) => SafeArea(
+          child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                const Art(doveAsset, size: 90),
+                Text(title, style: Theme.of(c).textTheme.headlineSmall),
+                const SizedBox(height: 12),
+                const Text('No connections yet.'),
+                const SizedBox(height: 12),
+                TextButton(
+                    onPressed: () => Navigator.pop(c),
+                    child: const Text('Close'))
+              ]))));
 
   String greeting() {
     final n = DateTime.now();
@@ -490,7 +524,10 @@ class _HomePageState extends ConsumerState<HomePage>
   }
 
   Widget today(PrayerStore store) {
-    final active = store.prayers.where((p) => !p.answered).toList();
+    final active = store.prayers
+        .where(
+            (p) => !p.answered && (store.postForPrayer(p.id)?.visible ?? true))
+        .toList();
     final primary =
         Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Padding(
@@ -500,7 +537,7 @@ class _HomePageState extends ConsumerState<HomePage>
               child: ActionButton('Start praying',
                   icon: CupertinoIcons.arrow_right, onTap: startPrayer))),
       SectionTitle('Your prayers today',
-          action: 'Add prayer', onTap: () => compose()),
+          action: 'Add prayer', onTap: () => openPostComposer(context)),
       if (active.isEmpty)
         Surface(
             child:
@@ -510,11 +547,6 @@ class _HomePageState extends ConsumerState<HomePage>
           const SizedBox(height: 8),
           const Text(
               'Keep a person, a hope, or a thank-you close throughout your day.'),
-          const SizedBox(height: 16),
-          ActionButton('Add a prayer',
-              icon: CupertinoIcons.plus,
-              secondary: true,
-              onTap: () => compose())
         ]))
       else
         Surface(
@@ -523,7 +555,14 @@ class _HomePageState extends ConsumerState<HomePage>
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   for (final p in active.take(4))
-                    PrayerRow(p, onEdit: () => compose(prayer: p)),
+                    PrayerRow(p, onEdit: () {
+                      final post = store.postForPrayer(p.id);
+                      if (post != null) {
+                        openPostComposer(context, post: post);
+                      } else {
+                        compose(prayer: p);
+                      }
+                    }),
                   Padding(
                       padding: const EdgeInsets.only(left: 16, top: 8),
                       child: Text(
@@ -618,22 +657,29 @@ class _HomePageState extends ConsumerState<HomePage>
                             child: const Text('Close')),
                       ])))));
   Widget personal(PrayerStore store) {
-    final items = store.prayers.where((p) => p.answered == answered).toList();
+    final items = store.prayers.where((p) {
+      final post = store.postForPrayer(p.id);
+      final hidden = post != null && !post.visible;
+      return prayerTab == 2
+          ? hidden
+          : !hidden && p.answered == (prayerTab == 1);
+    }).toList();
     final list =
         Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      Wrap(
-          alignment: WrapAlignment.spaceBetween,
-          spacing: 12,
-          runSpacing: 12,
-          children: [
-            Wrap(spacing: 8, children: [
-              for (final v in [false, true])
-                filterChip(v ? 'Answered' : 'Active', answered == v,
-                    () => setState(() => answered = v))
-            ]),
-            ActionButton('Add prayer',
-                icon: CupertinoIcons.plus, onTap: () => compose())
-          ]),
+      BibleTabs(
+          labels: const ['Active', 'Answered', 'Archive'],
+          index: prayerTab,
+          onChanged: (i) => setState(() {
+                prayerTab = i;
+                answered = i == 1;
+              })),
+      const SizedBox(height: 12),
+      if (prayerTab == 0)
+        Align(
+            alignment: Alignment.centerLeft,
+            child: ActionButton('Add prayer',
+                icon: CupertinoIcons.plus,
+                onTap: () => openPostComposer(context))),
       const SizedBox(height: 20),
       if (items.isEmpty)
         EmptyView(
@@ -641,22 +687,26 @@ class _HomePageState extends ConsumerState<HomePage>
             body: answered
                 ? 'Prayers you mark answered will be kept here. Checking “Prayed today” won’t move them.'
                 : 'A simple list for the people and hopes you want to keep close.',
-            action: answered
-                ? null
-                : ActionButton('Add a prayer', onTap: () => compose()))
+            action: null)
       else
         Surface(
             padding: const EdgeInsets.all(12),
             child: Column(children: [
               for (final p in items)
-                PrayerRow(p, onEdit: () => compose(prayer: p))
+                PrayerRow(p, onEdit: () {
+                  final post = store.postForPrayer(p.id);
+                  if (post != null) {
+                    openPostComposer(context, post: post);
+                  } else {
+                    compose(prayer: p);
+                  }
+                })
             ])),
     ]);
     final widget =
         Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       const SectionTitle('A little closer'),
-      const Text(
-          'Your prayers, on your home screen. Tap a row in this preview to try checking it off.'),
+      const Text('Keep your prayers close, wherever the day takes you.'),
       const SizedBox(height: 16),
       const WidgetPreview(),
       const SizedBox(height: 16),

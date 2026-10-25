@@ -11,25 +11,26 @@ Existing Flutter/Dart app, also runnable in Chrome. Riverpod and SharedPreferenc
 Christians keeping personal prayers and reflections, and exploring a social prayer wall and community spaces.
 
 ## Product Purpose
-A prayer wall that feels like a personal, expressive social feed. People choose a post material and Bible-inspired stickers while keeping readable prayer text central.
+A personal, expressive prayer wall with Bible-inspired art, five writing materials and readable live prayer text.
 
 ## Operating Context
-Wall is the default feed. Community contains spaces. Prayers holds the private checklist and Android widget. Profile begins with editable name, bio and optional device-local photo, followed by Today, journal access and saved posts. The Wall header avatar opens Profile; the approved dove is its no-photo fallback. Appearance and local data settings are accessible only in Profile.
+Wall launches first; Wall / Community / Prayers / Profile are primary. Community has Family, Young People and School Friends with searchable Discover / My spaces. Prayers has Active / Answered / Archive. Profile places avatar left and editable name/bio right, followed by Prayer partners / Fellowship empty connection sheets and Today / Journal / Saved. Settings is available only in Profile.
 
 ## Capabilities and Constraints
-Preserve existing personal prayer IDs, completion, answered state, widget inclusion, journal data and theme preferences. Current community content is a labeled preview; new composed posts are local on this device until a real backend is implemented. Never claim a public publish or real community membership. Local custom posts must persist, support editing/deletion, five material styles, sticker choice and placement. Keep failed input recoverable. Profile uses queued device-local persistence in profile_v1 and schemaVersion 4 JSON export; no account, photo upload or public identity service is implied.
+Everything persists on this device. Public is the default composed-post audience field; it does not upload, authenticate or publish to another person. Private remains selectable. The Settings explanation carries this backend limitation; repeated sample/local badges were removed from feed, composer and community at the owner's request. No fabricated accounts, connection counts or real community membership claims.
+
+Composer has title/body, topic below writing fields, audience, expiry (one day, one week, clamped calendar month, specific date or infinite), material directly above Preview, biblical sticker placement and curated pastel color. It occupies 80% viewport height with pinned Publish / Save changes footer. Posts keep stable IDs; saved edits update the matching prayer title without duplicate prayer rows. Other posts can be added through the plus action. Archive removes linked prayers from the widget; restoring clears expiry and does not automatically re-pin them. Daily completion remains distinct from Answered.
+
+Preserve existing prayer/journal/profile/theme data and formats. wall_posts_v1 and prayer records use additive fields for audience, color, expiry, archive and linkage. Profile uses queued profile_v1 writes and schemaVersion 4 export; photo selection is device-local. Failed input remains recoverable. Backend, auth, cloud sync, moderation, comments and push are unimplemented.
 
 ## Brand Commitments
-Prayer Wall name and owner-approved Option A clean graphic dove remain. Original source: docs/design-concepts/ollie-a-clean-graphic.png. Use meaningful original biblical assets in a matching soft graphic style. No decorative borders on buttons/cards. Essential buttons and selection controls are monochrome neutral/off-white, while content, category and community art remain colorful. Black notched mobile dock with raised white central create circle; each Prayer categories tile has a single illustration. User explicitly requests richer visuals and animated icon feedback, not a dashboard.
+Prayer Wall and owner-approved Option A dove remain binding. Outfit headings, DM Sans body, original soft graphic biblical artwork and monochrome essential actions stay. Bible-inspired attached page tabs use butter selected fill; content remains colorful. No decorative card/button borders. Black notched mobile dock and raised white Create circle share a coordinate system. Icons rotate and scale without vertical bouncing and respect reduced motion.
 
 ## Evidence on Hand
-Existing master plan and nineteen retained owner reference/confirmation/bug screenshots. Current refinement source, 16 passing tests and clean analysis. Final status-overlay correction web release passed (115.4 seconds); browser review is SHIP within the four supplied Chrome views. Current Android APK attempt failed on a Google dependency download; older APK proof predates this refinement. No connected public backend or Android device testing evidence.
+Issues.docx and ten extracted images are retained under docs/issues/2026-10-25/. Current plan is docs/superpowers/plans/2026-10-25-issues-implementation.md. Final verification passed: 18 tests, zero analyzer issues, release web build (60.8s) and debug Android APK build (39.3s). Independent browser visual and sampled-source review is SHIP within the seven valid Issues captures, with no material fixes; see .impeccable/review/issues-finish-review.md. Consult docs/IMPLEMENTATION_STATUS.md for evidence boundaries. Previous 17-test dock pass, older browser SHIP reviews and prior Samsung install are historical and do not establish acceptance of the Issues changes. ADB currently lists no device; native visual/widget acceptance remains open.
 
 ## Product Principles
-Readable content wins over decoration. Private and public actions stay explicit. Prayed today is separate from Answered. Preserve data. No guilt streaks or spiritual scores.
+Readable content wins over decoration. Private and public intent stay explicit. Prayed today is separate from Answered. Preserve data. No guilt streaks or spiritual scores.
 
 ## Current authorization
-Owner explicitly requested auto-plan then auto-execute without questions or approval pauses. This supersedes skill approval/interview gates for this redesign. Choices left open are delegated to agent judgment. No external publication, GitHub push or messaging is authorized.
-
-
-Latest device delivery (2026-10-25): current debug APK build passed (58.6s) and ADB replacement install succeeded on Samsung SM-A326B, user 0. Prior dependency-download failure is historical. Native visual/widget acceptance remains separate and unverified.
+Owner requested automatic planning and implementation without questions or approval pauses. No public deployment, GitHub push or external messaging is authorized.

@@ -246,7 +246,7 @@ class _AnimatedGlyphState extends State<AnimatedGlyph>
             ? 0.0
             : math.sin(controller.value * math.pi);
         return Transform.translate(
-            offset: Offset(0, -2 * wave),
+            offset: Offset.zero,
             child: Transform.rotate(
                 angle: .12 * wave,
                 child: Transform.scale(
@@ -256,4 +256,49 @@ class _AnimatedGlyphState extends State<AnimatedGlyph>
                         size: widget.size,
                         color: widget.color))));
       });
+}
+
+class BibleTabs extends StatelessWidget {
+  const BibleTabs(
+      {required this.labels,
+      required this.index,
+      required this.onChanged,
+      super.key});
+  final List<String> labels;
+  final int index;
+  final ValueChanged<int> onChanged;
+  @override
+  Widget build(BuildContext context) =>
+      Wrap(spacing: 3, runSpacing: 4, children: [
+        for (var i = 0; i < labels.length; i++)
+          Padding(
+              padding: EdgeInsets.only(top: i == index ? 0 : 5),
+              child: Pressable(
+                  radius: 0,
+                  onTap: () => onChanged(i),
+                  selected: i == index,
+                  child: Container(
+                      constraints: const BoxConstraints(minHeight: 48),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 18, vertical: 14),
+                      decoration: BoxDecoration(
+                          color: i == index
+                              ? tint(context, 'butter')
+                              : Theme.of(context).colorScheme.surface,
+                          borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(12)),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withValues(alpha: .04),
+                                offset: const Offset(0, 2),
+                                blurRadius: 3)
+                          ]),
+                      child: Text(labels[i],
+                          style: TextStyle(
+                              fontWeight: i == index
+                                  ? FontWeight.w700
+                                  : FontWeight.w500,
+                              color:
+                                  Theme.of(context).colorScheme.onSurface)))))
+      ]);
 }

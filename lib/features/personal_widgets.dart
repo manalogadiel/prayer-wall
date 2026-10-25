@@ -84,11 +84,23 @@ class PrayerRow extends ConsumerWidget {
                 onSelected: (v) {
                   if (v == 'edit') onEdit?.call();
                   if (v == 'delete') remove(context, ref);
+                  if (v == 'archive' || v == 'restore') {
+                    final post = store.postForPrayer(item.id);
+                    if (post != null) store.archivePost(post, v == 'archive');
+                  }
                   if (v == 'answer' || v == 'pin') {
                     store.changePrayer(v, id: item.id);
                   }
                 },
                 itemBuilder: (_) => [
+                      if (store.postForPrayer(item.id) != null)
+                        PopupMenuItem(
+                            value: !store.postForPrayer(item.id)!.visible
+                                ? 'restore'
+                                : 'archive',
+                            child: Text(!store.postForPrayer(item.id)!.visible
+                                ? 'Restore prayer'
+                                : 'Archive prayer')),
                       const PopupMenuItem(
                           value: 'edit', child: Text('Edit prayer')),
                       PopupMenuItem(

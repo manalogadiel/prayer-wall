@@ -35,7 +35,9 @@ class _WallFeedState extends ConsumerState<WallFeed> {
   Widget build(BuildContext context) {
     final store = ref.watch(storeProvider);
     final s = Theme.of(context).colorScheme;
-    final items = store.feed
+    final items = (widget.savedOnly
+            ? store.feed.where((p) => p.visible)
+            : store.publicFeed)
         .where((p) =>
             (filter == 'Everyone' || p.topic == filter) &&
             (!widget.savedOnly || p.saved) &&
@@ -60,54 +62,69 @@ class _WallFeedState extends ConsumerState<WallFeed> {
       ],
       if (!widget.savedOnly) ...[
         const SectionTitle('Prayer categories'),
-        SizedBox(
-            height: MediaQuery.textScalerOf(context).scale(1) > 1.4 ? 178 : 144,
-            child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: stories.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 12),
-                itemBuilder: (_, i) {
-                  final e = stories[i];
-                  final topic = e.$1;
-                  return SizedBox(
-                      width: 92,
-                      key: ValueKey('category-${e.$1}'),
-                      child: Pressable(
-                          onTap: () => setState(() => filter = topic),
-                          radius: 24,
-                          child: Column(children: [
-                            Container(
-                                height: 100,
-                                width: 92,
-                                decoration: BoxDecoration(
-                                    color: tint(context, e.$3),
-                                    borderRadius: BorderRadius.circular(26)),
-                                child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Transform.rotate(
-                                          angle: i.isEven ? -.08 : .08,
-                                          child: Art(stickerAsset(e.$2)!,
-                                              size: 82)),
-                                      if (filter == topic)
-                                        Positioned(
-                                            top: 6,
-                                            right: 6,
-                                            child: Icon(
-                                                CupertinoIcons
-                                                    .check_mark_circled_solid,
-                                                size: 18,
-                                                color: s.primary)),
-                                    ])),
-                            const SizedBox(height: 8),
-                            Text(e.$1,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                    color: s.onSurface)),
-                          ])));
-                })),
+        LayoutBuilder(
+            builder: (context, box) => SizedBox(
+                height:
+                    MediaQuery.textScalerOf(context).scale(1) > 1.4 ? 178 : 144,
+                child: OverflowBox(
+                    minWidth: box.maxWidth + 40,
+                    maxWidth: box.maxWidth + 40,
+                    child: SizedBox(
+                        height: MediaQuery.textScalerOf(context).scale(1) > 1.4
+                            ? 178
+                            : 144,
+                        child: ListView.separated(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: stories.length,
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(width: 12),
+                            itemBuilder: (_, i) {
+                              final e = stories[i];
+                              final topic = e.$1;
+                              return SizedBox(
+                                  width: 92,
+                                  key: ValueKey('category-${e.$1}'),
+                                  child: Pressable(
+                                      onTap: () =>
+                                          setState(() => filter = topic),
+                                      radius: 24,
+                                      child: Column(children: [
+                                        Container(
+                                            height: 100,
+                                            width: 92,
+                                            decoration: BoxDecoration(
+                                                color: tint(context, e.$3),
+                                                borderRadius:
+                                                    BorderRadius.circular(26)),
+                                            child: Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  Transform.rotate(
+                                                      angle:
+                                                          i.isEven ? -.08 : .08,
+                                                      child: Art(
+                                                          stickerAsset(e.$2)!,
+                                                          size: 82)),
+                                                  if (filter == topic)
+                                                    Positioned(
+                                                        top: 6,
+                                                        right: 6,
+                                                        child: Icon(
+                                                            CupertinoIcons
+                                                                .check_mark_circled_solid,
+                                                            size: 18,
+                                                            color: s.primary)),
+                                                ])),
+                                        const SizedBox(height: 8),
+                                        Text(e.$1,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.w600,
+                                                color: s.onSurface)),
+                                      ])));
+                            }))))),
         const SizedBox(height: 8),
         Pressable(
             onTap: () => openPostComposer(context),
@@ -134,8 +151,6 @@ class _WallFeedState extends ConsumerState<WallFeed> {
                 child: const Text('Everyone'))
         ]),
         const SizedBox(height: 6),
-        const Text('Sample community. New posts save only on this device.',
-            style: TextStyle(fontSize: 11, height: 1.4)),
         const SizedBox(height: 20),
       ],
       if (items.isEmpty)
@@ -207,7 +222,10 @@ class SocialPostCard extends ConsumerWidget {
                           fontWeight: FontWeight.w700,
                           color: s.onSurface)),
                   const SizedBox(height: 2),
-                  Text(post.local ? 'Only on this device' : 'Sample prayer',
+                  Text(
+                      post.local && !post.isPublic
+                          ? 'Private prayer'
+                          : post.topic,
                       style: const TextStyle(fontSize: 11))
                 ])),
             if (post.local)
@@ -216,6 +234,8 @@ class SocialPostCard extends ConsumerWidget {
                   onSelected: (v) {
                     if (v == 'edit') {
                       openPostComposer(context, post: post);
+                    } else if (v == 'archive') {
+                      ref.read(storeProvider).archivePost(post, true);
                     } else {
                       delete(context, ref);
                     }
@@ -223,15 +243,33 @@ class SocialPostCard extends ConsumerWidget {
                   itemBuilder: (_) => const [
                         PopupMenuItem(value: 'edit', child: Text('Edit post')),
                         PopupMenuItem(
+                            value: 'archive', child: Text('Archive prayer')),
+                        PopupMenuItem(
                             value: 'delete', child: Text('Delete post'))
                       ])
-            else
-              SmallTag(post.topic,
-                  role: post.topic == 'Peace' ? 'blue' : 'mint'),
           ])),
       PostArtwork(post),
       const SizedBox(height: 6),
       Row(children: [
+        IconButton(
+            tooltip: storeHasPrayer(ref, post)
+                ? 'In your prayers'
+                : 'Add to my prayers',
+            onPressed: storeHasPrayer(ref, post)
+                ? null
+                : () async {
+                    final ok =
+                        await ref.read(storeProvider).addPostToPrayers(post);
+                    if (context.mounted && !ok) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Could not add prayer. Try again.')));
+                    }
+                  },
+            icon: Icon(
+                storeHasPrayer(ref, post)
+                    ? CupertinoIcons.check_mark_circled_solid
+                    : CupertinoIcons.plus_circle,
+                size: 22)),
         Pressable(
             onTap: () => ref.read(storeProvider).pray(post),
             padding: const EdgeInsets.fromLTRB(4, 12, 12, 12),
@@ -277,3 +315,6 @@ class SocialPostCard extends ConsumerWidget {
     ]);
   }
 }
+
+bool storeHasPrayer(WidgetRef ref, WallPost post) =>
+    ref.watch(storeProvider).prayers.any((p) => p.id == post.id);

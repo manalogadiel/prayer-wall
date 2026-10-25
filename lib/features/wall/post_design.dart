@@ -47,13 +47,18 @@ class PostArtwork extends StatelessWidget {
   final bool preview;
   @override
   Widget build(BuildContext context) {
-    final s = Theme.of(context).colorScheme;
+    final s = Theme.of(context).colorScheme.copyWith(
+        onSurface: post.colorValue == null
+            ? Theme.of(context).colorScheme.onSurface
+            : const Color(0xFF25262B));
     final path = stickerAsset(post.sticker);
     final large = MediaQuery.textScalerOf(context).scale(1) >= 1.5;
     final radius = post.design == PostDesign.sticky ? 5.0 : 22.0;
     return Container(
         decoration: BoxDecoration(
-            color: postColor(context, post.design),
+            color: post.colorValue == null
+                ? postColor(context, post.design)
+                : Color(post.colorValue!),
             borderRadius: BorderRadius.circular(radius),
             boxShadow: post.design == PostDesign.sticky
                 ? [
@@ -139,8 +144,8 @@ class PostArtwork extends StatelessWidget {
                                 child: Container(
                                     width: 76,
                                     height: 24,
-                                    color: const Color(0xFFE9DBAF)
-                                        .withValues(alpha: .7))))),
+                                    color: const Color(0xFFC6A56B)
+                                        .withValues(alpha: .75))))),
                 ]))));
   }
 }

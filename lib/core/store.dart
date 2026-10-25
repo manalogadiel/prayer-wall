@@ -116,6 +116,33 @@ class PrayerStore extends ChangeNotifier {
   List<WallPost> localPosts = [];
   Map<String, dynamic> _wallState = {};
   List<WallPost> get feed => [...localPosts, ...posts];
+  List<WallPost> get publicFeed =>
+      feed.where((p) => p.isPublic && p.visible).toList();
+  WallPost? postForPrayer(String id) {
+    final matches = localPosts.where((p) => p.id == id);
+    return matches.isEmpty ? null : matches.first;
+  }
+
+  Future<bool> addPostToPrayers(WallPost post) =>
+      changePrayer('add', item: PrayerItem(post.id, post.title));
+  Future<bool> archivePost(WallPost post, bool value) async {
+    final ok = await savePost(post.edit(
+        title: post.title,
+        body: post.body,
+        topic: post.topic,
+        design: post.design,
+        sticker: post.sticker,
+        backgroundSticker: post.backgroundSticker,
+        archived: value,
+        clearExpiry: !value));
+    if (!ok) return false;
+    final matches = prayers.where((p) => p.id == post.id);
+    if (value && matches.isNotEmpty && matches.first.pinned) {
+      return changePrayer('pin', id: post.id);
+    }
+    return true;
+  }
+
   // Reloads and writes share a queue; resume cannot replace a newer edit.
   Future<void> _pending = Future.value();
   Future<T> _serial<T>(Future<T> Function() operation) {
@@ -354,12 +381,23 @@ class PrayerStore extends ChangeNotifier {
           notifyListeners();
           return true;
         } catch (_) {
-          error = 'Your sample circle selection could not be saved. Try again.';
+          error = 'Your space selection could not be saved. Try again.';
           notifyListeners();
           return false;
         }
       });
-  Future<bool> savePost(WallPost post) => _serial(() async {
+  Future<bool> savePost(WallPost post) async {
+    final saved = await _savePost(post);
+    if (!saved) return false;
+    final current = prayers.where((p) => p.id == post.id);
+    return changePrayer(current.isEmpty ? 'add' : 'edit',
+        id: post.id,
+        item: current.isEmpty
+            ? PrayerItem(post.id, post.title)
+            : current.first.copy(title: post.title));
+  }
+
+  Future<bool> _savePost(WallPost post) => _serial(() async {
         if (!ready ||
             loadFailed ||
             !post.local ||

@@ -167,8 +167,11 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Add prayer').first);
     await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextField), 'Peace for my family');
-    await tester.tap(find.text('Add prayer').last);
+    await tester.enterText(
+        find.widgetWithText(TextField, 'Post title'), 'Peace for my family');
+    await tester.enterText(
+        find.widgetWithText(TextField, 'Your prayer'), 'Please give us peace.');
+    await tester.tap(find.text('Publish'));
     await tester.pumpAndSettle();
     expect(find.text('Peace for my family'), findsNWidgets(2));
     final checkbox = find.descendant(
@@ -188,8 +191,9 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Edit prayer'));
     await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextField), 'Care for our neighbors');
-    await tester.tap(find.text('Save changes'));
+    await tester.enterText(
+        find.widgetWithText(TextField, 'Post title'), 'Care for our neighbors');
+    await tester.tap(find.text('Publish'));
     await tester.pumpAndSettle();
     expect(find.text('Care for our neighbors'), findsNWidgets(2));
     expect(

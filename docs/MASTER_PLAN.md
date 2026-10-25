@@ -1,10 +1,20 @@
 # Prayer Wall — Master Product, Design, Asset, and Engineering Plan
 
-Version: 1.5 • Updated: 2026-10-25 (Asia/Manila)
+Version: 1.6 • Updated: 2026-10-25 (Asia/Manila)
 Owner: Diel  
 Working app name: **Prayer Wall**  
 Creative direction: **Soft, graphic, flat, and modern** — Little Flock remains a name/direction candidate only.
-Current deliverable: implemented local social wall with the owner-approved monochrome-control/profile refinement. Essential controls are neutral/off-white; colorful content remains. Black notched mobile dock has a raised white create circle. Wall category tiles use one illustration; the header avatar opens the editable device-local Profile, and Settings is available only in Profile. Wall / Community / Prayers / Profile are the primary destinations, Wall launches first, and Today / Journal / Saved live inside Profile. Five material post styles, persistent local composer/CRUD, saved/prayed state and searchable Community are implemented. Owner explicitly authorized automatic planning and execution without questions or approval pauses. Read PRODUCT.md, DESIGN.md and IMPLEMENTATION_STATUS.md before continuing. Chrome proof exists; native Android evidence remains pending and native finish review remains recapture. Refinement browser review is SHIP within the four named Chrome views; `.impeccable/review/refinement-finish-review.md` records no material fixes.
+Current deliverable: local Flutter social wall with the Issues.docx changes implemented and 18 tests, clean analysis, release web (60.8s) and debug APK (39.3s) passed. Independent browser visual and sampled-source review is SHIP within the seven valid Issues captures, with no material fixes; see .impeccable/review/issues-finish-review.md. Read the current milestone below before historical plan sections. Public is a persisted audience intent; Publish does not upload. Existing approved dove, fonts, colorful content, monochrome actions and shared-coordinate black notched dock remain. Native acceptance stays open; ADB currently has no connected device.
+
+## Current milestone — Issues.docx (supersedes earlier implementation/evidence claims)
+
+Owner evidence: docs/issues/2026-10-25/Issues.docx and ten extracted images. Execution plan: docs/superpowers/plans/2026-10-25-issues-implementation.md. Source now has Bible-inspired attached page tabs; avatar-left/name-right Profile with Prayer partners/Fellowship empty sheets; Family/Young People/School Friends; repeated sample/local UI labels removed except the honest backend explanation in Settings; Public default/Private audience, expiry, archive, curated pastel colors and stable prayer linkage; plus-to-prayer-list action; 80% composer with pinned footer, topic below fields and material above Preview; stronger tape, extended category viewport and rotation/scale icons without vertical bounce.
+
+Archive removes widget inclusion; restore clears expiry without re-pinning. Post saves update linked prayer titles and deduplicate by stable ID. Calendar month expiry clamps to the destination month's last day. Existing wall_posts_v1 and prayer formats receive additive fields; preserve data and IDs. Public/private intent never implies a real account, upload or connected membership. No fake partners/counts. The explicit latest owner request overrides earlier repeated sample-label guidance and detached-pill selection guidance.
+
+Final verification passed: 18 tests, zero analyzer issues, release web build (60.8s) and debug Android APK build (39.3s). Independent browser visual and sampled-source review is SHIP within the seven valid Issues captures, with no material fixes; see .impeccable/review/issues-finish-review.md. docs/IMPLEMENTATION_STATUS.md is authoritative. Older refinement SHIP reports, 16/17-test results and Samsung install are historical; none establishes latest Issues acceptance. Do not edit old reviewer reports. Current browser captures/review use issues-* names with proof copies. ADB currently lists no device, so latest native install/visual/widget acceptance remains unverified. Refresh handoff archives after final verification; earlier archives may predate this milestone.
+
+The remaining numbered sections retain long-term roadmap and prior milestone context. Where current behavior/evidence conflicts, this section, PRODUCT.md and IMPLEMENTATION_STATUS.md take precedence.
 
 Mascot decision and history: [DOVE_STYLE_EXPLORATION.md](DOVE_STYLE_EXPLORATION.md) records the approved Option A and alternatives. [DOVE_MASCOT_OPTION.md](DOVE_MASCOT_OPTION.md) preserves the original proposal and biblical meaning. These historical proposals do not override the approved master below.
 
@@ -19,7 +29,7 @@ The owner wants an outstanding Christian prayer app: friendly, professional, uni
 ### 1.1 Priority
 
 1. Follow the owner's latest explicit instructions and the executing environment's applicable rules.
-2. Use this file as the canonical roadmap; PRODUCT.md holds current product truth and DESIGN.md holds implemented tokens. The social-wall spec/plan and latest 2026-10-25-monochrome-profile-refinement.md plan under docs/superpowers/, plus UI-SOCIAL-REVAMP-DELIVERY.md, record the current implemented milestone.
+2. Use this file as the canonical roadmap; PRODUCT.md holds current product truth and DESIGN.md holds implemented tokens. The latest docs/superpowers/plans/2026-10-25-issues-implementation.md plan and UI-SOCIAL-REVAMP-DELIVERY.md record the current milestone. Earlier plans remain historical context.
 3. Read [REFERENCE_ANALYSIS.md](REFERENCE_ANALYSIS.md), [REFERENCE_INDEX.md](REFERENCE_INDEX.md), and all nineteen files in `design-references/` (01–12 initial direction/confirmation and 13–19 current refinement evidence).
 4. Use [PLAN.md](PLAN.md) for the original backend roadmap where consistent with this file.
 5. [UI-DELIVERY.md](UI-DELIVERY.md) documents the old baseline. Its painted art direction was rejected and is not the design to continue.
@@ -77,9 +87,9 @@ The repository containing this document is a local working copy with uncommitted
 | Personal prayers/journal | Stable-ID CRUD, daily completion independent of answered; journal migration and failure protection |
 | Android | MainActivity/PrayerWidget, MethodChannel, native RemoteViews; transparent bars/edge-to-edge source |
 | Artwork | Approved dove plus boat, bread/fish, journal, lamp, lamb and ark; original prompt provenance |
-| Tests/builds | 16 tests pass after final correction; analysis zero issues; final web release passed (115.4 seconds). Four-view Chrome review SHIP; native acceptance remains recapture. Current APK attempt failed on Google dependency download; historical APK success predates this refinement. |
+| Tests/builds | Final Issues: 18 tests pass, analyzer zero issues, web release 60.8s and debug APK 39.3s pass; seven-capture browser/source review SHIP (.impeccable/review/issues-finish-review.md). See IMPLEMENTATION_STATUS.md. Earlier refinement/dock results and scoped browser SHIP reviews are historical. ADB currently has no device; latest native install/acceptance remains open. |
 
-Earlier Chrome proof lives in `design/proofs/social-revamp/`. Current refinement captures are retained in `.impeccable/review/refinement-{mobile-dark,mobile-light,profile-dark,desktop-light}.png` with copies in `design/proofs/monochrome-refinement/`; independent browser review is SHIP within these four views, recorded in `.impeccable/review/refinement-finish-review.md`. Native acceptance remains separate. Independent `.impeccable/review/finish-review.md` remains **recapture** because no Android capture exists; the Chrome/source supplement is separately labeled. Native system bars/insets, keyboard and launcher widget behavior require actual device evidence. Historical six/ten-test results are superseded by current status.
+Historical Chrome proof lives in `design/proofs/social-revamp/`. Earlier refinement captures are retained in `.impeccable/review/refinement-{mobile-dark,mobile-light,profile-dark,desktop-light}.png` with copies in `design/proofs/monochrome-refinement/`; independent browser review is SHIP within these four views, recorded in `.impeccable/review/refinement-finish-review.md`. Native acceptance remains separate. Independent `.impeccable/review/finish-review.md` remains **recapture** because no Android capture exists; the Chrome/source supplement is separately labeled. Native system bars/insets, keyboard and launcher widget behavior require actual device evidence. Historical six/ten-test results are superseded by current status.
 
 Not implemented: real auth, Supabase shared wall/circles, comments, moderation, cloud sync, push, release signing/store release or iOS widget. Do not infer public posting from the local composer.
 
@@ -105,12 +115,12 @@ Support gratitude and distress with equal care. Cuteness must not trivialize ser
 - Guests may browse and pray. Real public posting/commenting requires an account and circle authorization.
 - Local prayer/widget use must not require signup.
 - Do not upload local private content automatically when an account is created.
-- Sample interactions remain labeled sample until connected to real services.
+- Current owner instruction removes repeated sample/local labels from feed, composer and community. Settings explains that everything remains on this device until backend services exist; never claim real publication or membership.
 - Never promise a particular divine outcome or a prayer being answered because someone completed an app action.
 
 ### 3.3 Scope
 
-Current local social wall UI revamp is implemented; the next acceptance work is Android device verification. The local prayer experience and Android widget form the first usable beta. A public community release requires real auth, security, moderation, privacy, deletion, and operational readiness.
+Issues.docx changes passed 18 tests, clean analysis and current web/APK builds. The scoped seven-capture browser/source review is SHIP; continue Android device verification separately. The local prayer experience and Android widget form the first usable beta. A public community release requires real auth, security, moderation, privacy, deletion, and operational readiness.
 
 Defer unsolicited expansion into AI spiritual counseling, a character marketplace, subscriptions, full Bible-study software, voice features, and competitive gamification. Keep language localization-ready; English is current, Filipino/Tagalog remains open.
 
@@ -315,25 +325,25 @@ LOCKED current hierarchy: **Wall / Community / Prayers / Profile**. Wall launche
 
 ### 8.2 Wall and local composer
 
-Compact header with profile avatar, explicit Prayer categories heading and single-art horizontal topic tiles, compose prompt, topic filters, then author/material/action feed. Preserve local/sample audience labels. Story tiles and Community topic links filter Wall. Wall width is capped at 680 logical pixels on desktop.
+Compact header with profile avatar, explicit Prayer categories heading and single-art horizontal topic tiles, compose prompt, topic filters, then author/material/action feed. Keep the missing-backend explanation in Settings; do not reintroduce repeated sample/local feed labels. Story tiles and Community topic links filter Wall. Wall width is capped at 680 logical pixels on desktop.
 
 Five materials: Sticky note, Paper, Formal, Normal, Wall. Author and actions remain outside the material. Live composer has title (120), body (1000), topic, material, optional sticker, foreground/background placement and preview. Validate trimmed nonempty content, retain input on failure and guard repeated save. Local stable-ID posts can be edited/deleted and appear before sample content. Persist local posts under `wall_posts_v1` and saved/prayed state under `wall_state_v1`; do not alter prayer/journal keys. Saved in Profile reads actual local state. Copy/share copies text with truthful confirmation. No public publish or account requirement is simulated.
 
-Future public posting requires backend auth/authorization, privacy and moderation; do not import those future fields into a fake live composer.
+The composer persists Public/Private audience intent, default Public, without uploading. Real public posting still requires backend auth/authorization, privacy and moderation. Its 80% viewport sheet keeps the Publish / Save changes footer pinned; fields scroll and account for keyboard insets. Topic follows title/body; material sits directly above Preview. Additive color/expiry/archive fields and stable post/prayer linkage retain current storage keys. Expiry supports day, week, clamped calendar month, specific date or infinite.
 
 ### 8.3 Community
 
-Searchable straight colorful cards with tall arch artwork windows; no wavy edges. Discover / My spaces filters, detail sheet, explicit local add/leave state and View prayers topic navigation are implemented. The local selection does not enroll a person in a live community. At available width 700px use two columns with 16px gaps; large text removes side art. Real public/private membership and invitation validation remain backend work.
+Family, Young People and School Friends use searchable straight colorful cards with tall arch artwork windows; no wavy edges. Discover / My spaces Bible-inspired page tabs, detail sheet, device-local add/leave preferences and View prayers topic navigation are implemented. The local selection does not enroll a person in a live community. At available width 700px use two columns with 16px gaps; large text removes side art. Real public/private membership and invitation validation remain backend work.
 
 ### 8.4 Prayers
 
-Active/Answered views; add/edit validated title, daily check/undo, explicit answered/reactivate, delete/undo and widget inclusion. Preserve IDs when editing. List works offline and failed saves remain recoverable. Optional notes and ordering remain incremental.
+Active / Answered / Archive Bible-inspired page tabs; Add prayer opens the full composer. Preserve existing private prayer editing, daily check/undo, explicit answered/reactivate, delete/undo and widget inclusion. Stable post IDs link composed/saved prayers and deduplicate title updates; plus actions add other posts. Archive removes linked widget inclusion; restore clears expiry without automatic re-pinning. Preserve IDs when editing. List works offline and failed saves remain recoverable. Optional notes and ordering remain incremental.
 
 ### 8.5 Profile: editable identity, Today / Journal / Saved
 
 Profile begins with avatar, editable name (60 characters), optional bio (160), optional photo and Edit profile. The header avatar opens Profile and uses the approved dove when no photo is set. Photo selection uses official Flutter image_picker 1.2.4, image sizing/compression and a 1 MB byte limit; no upload. Name/bio/photo persist through the existing queued writes in `profile_v1`; failed writes keep editor input. This is device-local identity, not an authenticated public account.
 
-Today retains focused first-unchecked prayer, checklist and calm empty/all-done behavior. Journal supports private local CRUD, stable-ID migration without invented historical dates and an open-book empty state. Saved displays the posts actually selected by the user, with reversible saved state. Profile does not fabricate follower counts, accounts or online activity.
+Today retains focused first-unchecked prayer, checklist and calm empty/all-done behavior. Journal supports private local CRUD, stable-ID migration without invented historical dates and an open-book empty state. Saved displays the posts actually selected by the user, with reversible saved state. Profile places avatar left and name/bio right; Prayer partners and Fellowship open empty connection sheets. Profile does not fabricate follower counts, accounts or online activity.
 
 ### 8.6 Settings and all screen states
 
@@ -470,13 +480,13 @@ Inspect actual checkout, available tools/devices, storage, tests, dependencies. 
 
 ### M1 — Static/browser proof (completed; native proof pending)
 
-Implemented social-wall browser proof covers Wall phone/desktop, Community phone/dark desktop, Profile and composer. See historical design/proofs/social-revamp/ and current design/proofs/monochrome-refinement/. Current four-view Chrome refinement review is SHIP in .impeccable/review/refinement-finish-review.md; final web release and 16 tests/analysis passed. Native Android screenshot proof remains pending; independent review requests recapture. The owner-approved Option A dove remains binding.
+Implemented social-wall browser proof covers Wall phone/desktop, Community phone/dark desktop, Profile and composer. See historical design/proofs/social-revamp/ and current design/proofs/monochrome-refinement/. Historical four-view Chrome refinement review is SHIP in .impeccable/review/refinement-finish-review.md; final web release and 16 tests/analysis passed. Native Android screenshot proof remains pending; independent review requests recapture. The owner-approved Option A dove remains binding.
 
 **Gate for this implementation:** the owner authorized proceeding with the full redesign using best judgment and then selected Option A by screenshot. Review actual screenshots internally and record limitations; no additional visual-proof stop is required in this run.
 
 ### M2 — Flutter design system and local screens
 
-Implement approved tokens/components/navigation/screens. Replace rejected artwork. Preserve local IDs/data/preferences. Keep disconnected community features visibly sample. Gate: usable primary actions, tested persistence, no narrow-screen overflow, no decorative card/button borders.
+Implement approved tokens/components/navigation/screens. Replace rejected artwork. Preserve local IDs/data/preferences. Keep disconnected-service truth in Settings and documentation; follow the latest owner request removing repeated sample badges. Gate: usable primary actions, tested persistence, no narrow-screen overflow, no decorative card/button borders.
 
 ### M3 — Native widget redesign
 
@@ -594,10 +604,13 @@ Version 1.3, 2026-10-25: owner confirmed Option A clean graphic dove by screensh
 Historical version 1.4, 2026-10-25 (verification applies only to that earlier revision): social wall implementation replaces Today-first dashboard. Added five local post materials/composer/CRUD, saved/prayed persistence, Community selection, Profile nesting, lamp/lamb/ark and native/web top-area source changes. Canonical visual tokens captured in DESIGN.md and .impeccable/design.json. Fourteen tests pass; analysis and web/APK builds succeed. Chrome proof is distinct from pending Android acceptance; independent finish review remains recapture.
 
 
-Version 1.5, 2026-10-25: monochrome essential controls, black notched dock/raised create circle, single-art Prayer categories and editable local Profile implemented. Settings is restricted to Profile. Dark canvas is neutral charcoal across owned layers; source overlays request actual canvas. References 13–18 retained. Sixteen tests passed again and analysis reported zero issues after final correction; final web release passed (115.4 seconds). Independent browser review is SHIP within four Chrome views, no material fixes. Current Android APK attempt failed downloading androidx.collection:collection-ktx:1.4.2 from Google because host/network was unavailable; no current APK or native visual acceptance is claimed. External phone frame remains unverified: Computer Use stopped when Chrome URL could not be verified.
+Historical version 1.5, 2026-10-25: monochrome essential controls, black notched dock/raised create circle, single-art Prayer categories and editable local Profile implemented. Settings is restricted to Profile. Dark canvas is neutral charcoal across owned layers; source overlays request actual canvas. References 13–18 retained. Sixteen tests passed again and analysis reported zero issues after final correction; final web release passed (115.4 seconds). Independent browser review is SHIP within four Chrome views, no material fixes. Current Android APK attempt failed downloading androidx.collection:collection-ktx:1.4.2 from Google because host/network was unavailable; no current APK or native visual acceptance is claimed. External phone frame remains unverified: Computer Use stopped when Chrome URL could not be verified.
 
 
-Latest device delivery (2026-10-25): current debug APK build passed (58.6s) and ADB replacement install succeeded on Samsung SM-A326B, user 0. Prior dependency-download failure is historical. Native visual/widget acceptance remains separate and unverified.
+Historical device delivery (2026-10-25, before latest dock/Issues changes): debug APK build passed (58.6s) and ADB replacement install succeeded on Samsung SM-A326B, user 0. Prior dependency-download failure is historical. Native visual/widget acceptance remains separate and unverified.
 
 
 2026-10-25 dock correction: the padding-only fix was incomplete. The previous BottomAppBar clipper used full-screen X coordinates inside a horizontally inset dock. A local Stack/DockClipper now owns both notch and button; see IMPLEMENTATION_STATUS.md for diagnosis and nine geometry regression cases.
+
+
+Version 1.6, 2026-10-25: Issues.docx source changes implemented, canonical docs/system reconciled with attached page tabs, pastel-ink exception and no vertical icon bounce. Final verification passed: 18 tests, zero analyzer issues, release web build (60.8s) and debug Android APK build (39.3s). Independent browser visual and sampled-source review is SHIP within the seven valid Issues captures, with no material fixes; see .impeccable/review/issues-finish-review.md. See IMPLEMENTATION_STATUS.md. No native acceptance inferred.
