@@ -1,23 +1,15 @@
 # Prayer Wall
 
-A Flutter app concept for a gentle, faith-centered social space. The demo has local-only authentication and feed state so it can run without a backend.
-Anyone can add to a prayer wall, and anyone can pray for it
+Flutter/Dart prayer app with a local social wall, personal prayers/journal and Android widget source. Wall launches first; Community / Prayers / Profile complete navigation. Community content is a labeled sample, and composed posts/profile/photo stay on this device. No connected public authentication or backend is claimed.
 
-**Roadmap:** see [docs/PLAN.md](docs/PLAN.md) for the v1 plan (Supabase free tier, guest praying, circles, Android/iOS/Web).
+Start with [START_HERE.md](START_HERE.md), [canonical plan](docs/MASTER_PLAN.md) and [current status](docs/IMPLEMENTATION_STATUS.md). The latest refinement adds neutral controls, black notched dock, single-art Prayer categories and editable Profile; colorful content and approved dove remain. Settings lives only in Profile.
 
 ## Run
 
-```bash
+```sh
 flutter pub get
+flutter test
 flutter run
 ```
 
-To add native host projects if they are not already present, run `flutter create --platforms=android,ios .` from this folder. The app source is platform-neutral and supports both Android and iOS.
-
-## Included
-
-- Sign in and welcoming sign-up flow
-- Prayer Wall feed with prayers and thanksgiving posts
-- Prayed reactions, comments affordance, topic chips, and saved posts
-- Anonymous posting toggle and post type selection
-- Profile and a quiet personal prayer journal
+Use a compatible Flutter SDK and platform tooling; preserve the existing Android project. See status for exact verification/build limits. Native Android visual, photo-picker and launcher-widget acceptance remain open; current APK retry is blocked by a Google dependency download failure. Backend/release milestones are separate work.

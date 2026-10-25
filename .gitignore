@@ -46,3 +46,8 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+.appdata/
+
+# Local handoff packages (source and documentation live in Git).
+/Prayer-Wall-*.zip

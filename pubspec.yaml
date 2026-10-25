@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  flutter_riverpod: ^3.4.3
+  shared_preferences: ^2.5.6
+  image_picker: 1.2.4
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +21,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/illustrations/characters/
+    - assets/illustrations/objects/
+  fonts:
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/Outfit.ttf
+    - family: DM Sans
+      fonts:
+        - asset: assets/fonts/DMSans.ttf

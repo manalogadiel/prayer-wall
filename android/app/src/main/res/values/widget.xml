@@ -1,0 +1,10 @@
+<resources>
+    <color name="widget_surface">#D5CBFF</color><color name="widget_ink">#191B24</color>
+    <style name="PrayerWidgetRow">
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">52dp</item><item name="android:paddingVertical">8dp</item>
+        <item name="android:gravity">center_vertical</item><item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/widget_ink</item><item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item><item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+</resources>

@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-25",
+  "assets": [
+    {
+      "id": "dove_master",
+      "version": 2,
+      "status": "owner-selected",
+      "sourcePath": "assets/illustrations/characters/dove_master_v002.png",
+      "exportedPaths": [
+        "assets/illustrations/characters/dove_master_v002.png",
+        "android/app/src/main/res/drawable/widget_dove.png"
+      ],
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "generator": "Built-in Image Generation",
+      "promptFile": "design/prompts/dove-master.txt",
+      "provenance": "Original generated project artwork; supplied screenshots used for inspiration, not shipped as artwork.",
+      "targetLogicalSize": 144,
+      "sourcePixels": [
+        1374,
+        1145
+      ],
+      "bytes": 555476,
+      "role": "Today hero, empty prayer list, widget",
+      "biblicalAssociation": "Genesis 8:11",
+      "decorative": true,
+      "semanticLabel": null,
+      "darkModeReview": "Reviewed in Flutter browser proof; native review pending",
+      "animationEligibility": "Static PNG; no layered rig",
+      "staticFallback": "assets/illustrations/characters/dove_master_v002.png",
+      "approvalEvidence": "Owner confirmed Option A with docs/design-references/08-approved-dove-confirmation.png",
+      "promptEmbedded": true
+    },
+    {
+      "id": "calm_boat",
+      "version": 1,
+      "status": "reviewed",
+      "sourcePath": "assets/illustrations/objects/calm_boat_v001.png",
+      "exportedPaths": [
+        "assets/illustrations/objects/calm_boat_v001.png"
+      ],
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "generator": "Built-in Image Generation",
+      "promptFile": "design/prompts/calm-boat.txt",
+      "provenance": "Original generated project artwork; supplied screenshots used for inspiration, not shipped as artwork.",
+      "targetLogicalSize": 96,
+      "sourcePixels": [
+        1374,
+        1145
+      ],
+      "bytes": 554046,
+      "role": "Peace reflection tile/dialog",
+      "biblicalAssociation": "Mark 4:35\u201341",
+      "decorative": true,
+      "semanticLabel": null,
+      "darkModeReview": "Reviewed in Flutter browser proof; native review pending",
+      "animationEligibility": "Static PNG; no layered rig",
+      "staticFallback": "assets/illustrations/objects/calm_boat_v001.png",
+      "approvalEvidence": "Agent-reviewed supporting object; not individually approved by owner",
+      "promptEmbedded": true
+    },
+    {
+      "id": "open_journal",
+      "version": 1,
+      "status": "reviewed",
+      "sourcePath": "assets/illustrations/objects/journal_v001.png",
+      "exportedPaths": [
+        "assets/illustrations/objects/journal_v001.png"
+      ],
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "generator": "Built-in Image Generation",
+      "promptFile": "design/prompts/open-journal.txt",
+      "provenance": "Original generated project artwork; supplied screenshots used for inspiration, not shipped as artwork.",
+      "targetLogicalSize": 112,
+      "sourcePixels": [
+        1374,
+        1145
+      ],
+      "bytes": 686652,
+      "role": "Journal empty state",
+      "biblicalAssociation": "Private reflection object, not a scriptural event",
+      "decorative": true,
+      "semanticLabel": null,
+      "darkModeReview": "Reviewed in Flutter browser proof; native review pending",
+      "animationEligibility": "Static PNG; no layered rig",
+      "staticFallback": "assets/illustrations/objects/journal_v001.png",
+      "approvalEvidence": "Agent-reviewed supporting object; not individually approved by owner",
+      "promptEmbedded": true
+    },
+    {
+      "id": "loaves_fish",
+      "version": 1,
+      "status": "reviewed",
+      "sourcePath": "assets/illustrations/objects/loaves_fish_v001.png",
+      "exportedPaths": [
+        "assets/illustrations/objects/loaves_fish_v001.png"
+      ],
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "generator": "Built-in Image Generation",
+      "promptFile": "design/prompts/loaves-fish.txt",
+      "provenance": "Original generated project artwork; supplied screenshots used for inspiration, not shipped as artwork.",
+      "targetLogicalSize": 72,
+      "sourcePixels": [
+        1374,
+        1145
+      ],
+      "bytes": 668254,
+      "role": "Gratitude tile",
+      "biblicalAssociation": "John 6:9\u201313",
+      "decorative": true,
+      "semanticLabel": null,
+      "darkModeReview": "Reviewed in Flutter browser proof; native review pending",
+      "animationEligibility": "Static PNG; no layered rig",
+      "staticFallback": "assets/illustrations/objects/loaves_fish_v001.png",
+      "approvalEvidence": "Agent-reviewed supporting object; not individually approved by owner",
+      "promptEmbedded": true
+    },
+    {
+      "id": "dove_app_mark",
+      "status": "reviewed",
+      "sourcePath": "web/brand.svg",
+      "exportedPaths": [
+        "web/icons/Icon-192.png",
+        "web/icons/Icon-512.png",
+        "android/app/src/main/res/drawable/app_icon.xml"
+      ],
+      "generator": "Authored vector geometry",
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "role": "Simplified small app identity",
+      "provenance": "Original code-authored derivative; no animation"
+    },
+    {
+      "id": "guiding_lamp",
+      "version": 1,
+      "status": "reviewed",
+      "sourcePath": "assets/illustrations/objects/lamp_v001.png",
+      "exportedPaths": [
+        "assets/illustrations/objects/lamp_v001.png"
+      ],
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "generator": "Built-in Image Generation",
+      "promptFile": "design/prompts/lamp.txt",
+      "provenance": "Original generated illustration using owner-approved clean graphic dove as style reference; exact prompt embedded in PNG.",
+      "targetLogicalSize": 140,
+      "role": "Light for the way space and post sticker",
+      "biblicalAssociation": "Psalm 119:105, lamp/path motif",
+      "decorative": true,
+      "semanticLabel": null,
+      "darkModeReview": "Flutter Chrome phone/desktop; native pending",
+      "animationEligibility": "Static PNG; no character rig",
+      "staticFallback": "assets/illustrations/objects/lamp_v001.png",
+      "approvalEvidence": "Agent-reviewed supporting asset; owner-approved master style",
+      "sourcePixels": [
+        1374,
+        1145
+      ],
+      "bytes": 425658,
+      "promptEmbedded": true
+    },
+    {
+      "id": "little_lamb",
+      "version": 1,
+      "status": "reviewed",
+      "sourcePath": "assets/illustrations/characters/lamb_v001.png",
+      "exportedPaths": [
+        "assets/illustrations/characters/lamb_v001.png"
+      ],
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "generator": "Built-in Image Generation",
+      "promptFile": "design/prompts/lamb.txt",
+      "provenance": "Original generated illustration using owner-approved clean graphic dove as style reference; exact prompt embedded in PNG.",
+      "targetLogicalSize": 140,
+      "role": "Family space and post sticker",
+      "biblicalAssociation": "Luke 15:4-7, lost sheep motif",
+      "decorative": true,
+      "semanticLabel": null,
+      "darkModeReview": "Flutter Chrome phone/desktop; native pending",
+      "animationEligibility": "Static PNG; no character rig",
+      "staticFallback": "assets/illustrations/characters/lamb_v001.png",
+      "approvalEvidence": "Agent-reviewed supporting asset; owner-approved master style",
+      "sourcePixels": [
+        1374,
+        1145
+      ],
+      "bytes": 629701,
+      "promptEmbedded": true
+    },
+    {
+      "id": "noah_ark",
+      "version": 1,
+      "status": "reviewed",
+      "sourcePath": "assets/illustrations/objects/ark_v001.png",
+      "exportedPaths": [
+        "assets/illustrations/objects/ark_v001.png"
+      ],
+      "masterReference": "docs/design-concepts/ollie-a-clean-graphic.png",
+      "generator": "Built-in Image Generation",
+      "promptFile": "design/prompts/ark.txt",
+      "provenance": "Original generated illustration using owner-approved clean graphic dove as style reference; exact prompt embedded in PNG.",
+      "targetLogicalSize": 140,
+      "role": "New beginnings space and post sticker",
+      "biblicalAssociation": "Genesis 8, Noah ark motif",
+      "decorative": true,
+      "semanticLabel": null,
+      "darkModeReview": "Flutter Chrome phone/desktop; native pending",
+      "animationEligibility": "Static PNG; no character rig",
+      "staticFallback": "assets/illustrations/objects/ark_v001.png",
+      "approvalEvidence": "Agent-reviewed supporting asset; owner-approved master style",
+      "sourcePixels": [
+        1374,
+        1145
+      ],
+      "bytes": 728874,
+      "promptEmbedded": true
+    }
+  ]
+}

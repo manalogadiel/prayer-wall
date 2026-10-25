@@ -17,19 +17,23 @@
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F7F8F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#262626" media="(prefers-color-scheme: dark)">
+  <style>html,body{margin:0;background:#F7F8F5;color-scheme:light dark}@media(prefers-color-scheme:dark){html,body{background:#262626}}</style>
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="A quiet place for prayer, community, and gratitude. Keep your prayers close with Prayer Wall.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="prayer_wall">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Prayer Wall">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/svg+xml" href="brand.svg"/>
 
-  <title>prayer_wall</title>
+  <title>Prayer Wall</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -41,6 +45,18 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
+  <script>
+    window.prayerWallSetTheme = function(dark) {
+      const color = dark ? '#262626' : '#F7F8F5';
+      const viewport = document.querySelector('meta[name="viewport"]');
+      if (viewport && !viewport.content.includes('viewport-fit=')) {
+        viewport.content += ', viewport-fit=cover';
+      }
+      document.querySelectorAll('meta[name="theme-color"]').forEach(meta => { meta.content = color; });
+      document.documentElement.style.backgroundColor = color;
+      document.body.style.backgroundColor = color;
+    };
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

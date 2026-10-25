@@ -1,0 +1,681 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T02:26:45.934457+00:00",
+  "title": "Design System: Prayer Wall",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "displayName": "Primary",
+        "role": "primary",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "primary-dark": {
+        "displayName": "Primary Dark",
+        "role": "primary",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "on-primary-dark": {
+        "displayName": "On Primary Dark",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "canvas": {
+        "displayName": "Canvas",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0041 121.56)",
+          "oklch(26% 0.0041 121.56)",
+          "oklch(38% 0.0041 121.56)",
+          "oklch(49% 0.0041 121.56)",
+          "oklch(61% 0.0041 121.56)",
+          "oklch(72% 0.0041 121.56)",
+          "oklch(84% 0.0041 121.56)",
+          "oklch(95% 0.0041 121.56)"
+        ]
+      },
+      "canvas-dark": {
+        "displayName": "Canvas Dark",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "surface": {
+        "displayName": "Surface",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "surface-dark": {
+        "displayName": "Surface Dark",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "ink": {
+        "displayName": "Ink",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0178 275.08)",
+          "oklch(26% 0.0178 275.08)",
+          "oklch(38% 0.0178 275.08)",
+          "oklch(49% 0.0178 275.08)",
+          "oklch(61% 0.0178 275.08)",
+          "oklch(72% 0.0178 275.08)",
+          "oklch(84% 0.0178 275.08)",
+          "oklch(95% 0.0178 275.08)"
+        ]
+      },
+      "ink-dark": {
+        "displayName": "Ink Dark",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0067 295.45)",
+          "oklch(26% 0.0067 295.45)",
+          "oklch(38% 0.0067 295.45)",
+          "oklch(49% 0.0067 295.45)",
+          "oklch(61% 0.0067 295.45)",
+          "oklch(72% 0.0067 295.45)",
+          "oklch(84% 0.0067 295.45)",
+          "oklch(95% 0.0067 295.45)"
+        ]
+      },
+      "muted": {
+        "displayName": "Muted",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0183 273.54)",
+          "oklch(26% 0.0183 273.54)",
+          "oklch(38% 0.0183 273.54)",
+          "oklch(49% 0.0183 273.54)",
+          "oklch(61% 0.0183 273.54)",
+          "oklch(72% 0.0183 273.54)",
+          "oklch(84% 0.0183 273.54)",
+          "oklch(95% 0.0183 273.54)"
+        ]
+      },
+      "muted-dark": {
+        "displayName": "Muted Dark",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0188 272.26)",
+          "oklch(26% 0.0188 272.26)",
+          "oklch(38% 0.0188 272.26)",
+          "oklch(49% 0.0188 272.26)",
+          "oklch(61% 0.0188 272.26)",
+          "oklch(72% 0.0188 272.26)",
+          "oklch(84% 0.0188 272.26)",
+          "oklch(95% 0.0188 272.26)"
+        ]
+      },
+      "lilac": {
+        "displayName": "Lilac",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0720 293.66)",
+          "oklch(26% 0.0720 293.66)",
+          "oklch(38% 0.0720 293.66)",
+          "oklch(49% 0.0720 293.66)",
+          "oklch(61% 0.0720 293.66)",
+          "oklch(72% 0.0720 293.66)",
+          "oklch(84% 0.0720 293.66)",
+          "oklch(95% 0.0720 293.66)"
+        ]
+      },
+      "lilac-dark": {
+        "displayName": "Lilac Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0510 296.22)",
+          "oklch(26% 0.0510 296.22)",
+          "oklch(38% 0.0510 296.22)",
+          "oklch(49% 0.0510 296.22)",
+          "oklch(61% 0.0510 296.22)",
+          "oklch(72% 0.0510 296.22)",
+          "oklch(84% 0.0510 296.22)",
+          "oklch(95% 0.0510 296.22)"
+        ]
+      },
+      "blue": {
+        "displayName": "Blue",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0329 248.18)",
+          "oklch(26% 0.0329 248.18)",
+          "oklch(38% 0.0329 248.18)",
+          "oklch(49% 0.0329 248.18)",
+          "oklch(61% 0.0329 248.18)",
+          "oklch(72% 0.0329 248.18)",
+          "oklch(84% 0.0329 248.18)",
+          "oklch(95% 0.0329 248.18)"
+        ]
+      },
+      "blue-dark": {
+        "displayName": "Blue Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0376 240.33)",
+          "oklch(26% 0.0376 240.33)",
+          "oklch(38% 0.0376 240.33)",
+          "oklch(49% 0.0376 240.33)",
+          "oklch(61% 0.0376 240.33)",
+          "oklch(72% 0.0376 240.33)",
+          "oklch(84% 0.0376 240.33)",
+          "oklch(95% 0.0376 240.33)"
+        ]
+      },
+      "butter": {
+        "displayName": "Butter",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0837 88.56)",
+          "oklch(26% 0.0837 88.56)",
+          "oklch(38% 0.0837 88.56)",
+          "oklch(49% 0.0837 88.56)",
+          "oklch(61% 0.0837 88.56)",
+          "oklch(72% 0.0837 88.56)",
+          "oklch(84% 0.0837 88.56)",
+          "oklch(95% 0.0837 88.56)"
+        ]
+      },
+      "butter-dark": {
+        "displayName": "Butter Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0336 83.12)",
+          "oklch(26% 0.0336 83.12)",
+          "oklch(38% 0.0336 83.12)",
+          "oklch(49% 0.0336 83.12)",
+          "oklch(61% 0.0336 83.12)",
+          "oklch(72% 0.0336 83.12)",
+          "oklch(84% 0.0336 83.12)",
+          "oklch(95% 0.0336 83.12)"
+        ]
+      },
+      "mint": {
+        "displayName": "Mint",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0467 131.39)",
+          "oklch(26% 0.0467 131.39)",
+          "oklch(38% 0.0467 131.39)",
+          "oklch(49% 0.0467 131.39)",
+          "oklch(61% 0.0467 131.39)",
+          "oklch(72% 0.0467 131.39)",
+          "oklch(84% 0.0467 131.39)",
+          "oklch(95% 0.0467 131.39)"
+        ]
+      },
+      "mint-dark": {
+        "displayName": "Mint Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0315 151.70)",
+          "oklch(26% 0.0315 151.70)",
+          "oklch(38% 0.0315 151.70)",
+          "oklch(49% 0.0315 151.70)",
+          "oklch(61% 0.0315 151.70)",
+          "oklch(72% 0.0315 151.70)",
+          "oklch(84% 0.0315 151.70)",
+          "oklch(95% 0.0315 151.70)"
+        ]
+      },
+      "peach": {
+        "displayName": "Peach",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0675 33.37)",
+          "oklch(26% 0.0675 33.37)",
+          "oklch(38% 0.0675 33.37)",
+          "oklch(49% 0.0675 33.37)",
+          "oklch(61% 0.0675 33.37)",
+          "oklch(72% 0.0675 33.37)",
+          "oklch(84% 0.0675 33.37)",
+          "oklch(95% 0.0675 33.37)"
+        ]
+      },
+      "peach-dark": {
+        "displayName": "Peach Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0421 32.56)",
+          "oklch(26% 0.0421 32.56)",
+          "oklch(38% 0.0421 32.56)",
+          "oklch(49% 0.0421 32.56)",
+          "oklch(61% 0.0421 32.56)",
+          "oklch(72% 0.0421 32.56)",
+          "oklch(84% 0.0421 32.56)",
+          "oklch(95% 0.0421 32.56)"
+        ]
+      },
+      "field": {
+        "displayName": "Field",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0041 121.56)",
+          "oklch(26% 0.0041 121.56)",
+          "oklch(38% 0.0041 121.56)",
+          "oklch(49% 0.0041 121.56)",
+          "oklch(61% 0.0041 121.56)",
+          "oklch(72% 0.0041 121.56)",
+          "oklch(84% 0.0041 121.56)",
+          "oklch(95% 0.0041 121.56)"
+        ]
+      },
+      "field-dark": {
+        "displayName": "Field Dark",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.0200 273.23)",
+          "oklch(26% 0.0200 273.23)",
+          "oklch(38% 0.0200 273.23)",
+          "oklch(49% 0.0200 273.23)",
+          "oklch(61% 0.0200 273.23)",
+          "oklch(72% 0.0200 273.23)",
+          "oklch(84% 0.0200 273.23)",
+          "oklch(95% 0.0200 273.23)"
+        ]
+      },
+      "paper": {
+        "displayName": "Paper",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0120 247.95)",
+          "oklch(26% 0.0120 247.95)",
+          "oklch(38% 0.0120 247.95)",
+          "oklch(49% 0.0120 247.95)",
+          "oklch(61% 0.0120 247.95)",
+          "oklch(72% 0.0120 247.95)",
+          "oklch(84% 0.0120 247.95)",
+          "oklch(95% 0.0120 247.95)"
+        ]
+      },
+      "paper-dark": {
+        "displayName": "Paper Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0271 242.32)",
+          "oklch(26% 0.0271 242.32)",
+          "oklch(38% 0.0271 242.32)",
+          "oklch(49% 0.0271 242.32)",
+          "oklch(61% 0.0271 242.32)",
+          "oklch(72% 0.0271 242.32)",
+          "oklch(84% 0.0271 242.32)",
+          "oklch(95% 0.0271 242.32)"
+        ]
+      },
+      "formal": {
+        "displayName": "Formal",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0207 301.14)",
+          "oklch(26% 0.0207 301.14)",
+          "oklch(38% 0.0207 301.14)",
+          "oklch(49% 0.0207 301.14)",
+          "oklch(61% 0.0207 301.14)",
+          "oklch(72% 0.0207 301.14)",
+          "oklch(84% 0.0207 301.14)",
+          "oklch(95% 0.0207 301.14)"
+        ]
+      },
+      "formal-dark": {
+        "displayName": "Formal Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0359 293.34)",
+          "oklch(26% 0.0359 293.34)",
+          "oklch(38% 0.0359 293.34)",
+          "oklch(49% 0.0359 293.34)",
+          "oklch(61% 0.0359 293.34)",
+          "oklch(72% 0.0359 293.34)",
+          "oklch(84% 0.0359 293.34)",
+          "oklch(95% 0.0359 293.34)"
+        ]
+      },
+      "wall": {
+        "displayName": "Wall",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0226 151.64)",
+          "oklch(26% 0.0226 151.64)",
+          "oklch(38% 0.0226 151.64)",
+          "oklch(49% 0.0226 151.64)",
+          "oklch(61% 0.0226 151.64)",
+          "oklch(72% 0.0226 151.64)",
+          "oklch(84% 0.0226 151.64)",
+          "oklch(95% 0.0226 151.64)"
+        ]
+      },
+      "wall-dark": {
+        "displayName": "Wall Dark",
+        "role": "secondary",
+        "tonalRamp": [
+          "oklch(15% 0.0292 163.92)",
+          "oklch(26% 0.0292 163.92)",
+          "oklch(38% 0.0292 163.92)",
+          "oklch(49% 0.0292 163.92)",
+          "oklch(61% 0.0292 163.92)",
+          "oklch(72% 0.0292 163.92)",
+          "oklch(84% 0.0292 163.92)",
+          "oklch(95% 0.0292 163.92)"
+        ]
+      },
+      "action-top": {
+        "displayName": "Action Top",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "action-bottom": {
+        "displayName": "Action Bottom",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "action-fill": {
+        "displayName": "Action Fill",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "action-ink": {
+        "displayName": "Action Ink",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "dock": {
+        "displayName": "Dock",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "dock-muted": {
+        "displayName": "Dock Muted",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "create": {
+        "displayName": "Create",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "create-ink": {
+        "displayName": "Create Ink",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "body": {
+        "displayName": "Reading body",
+        "purpose": "Prayer and functional text."
+      },
+      "title": {
+        "displayName": "Rounded title",
+        "purpose": "Surface and section titles."
+      }
+    },
+    "shadows": [
+      {
+        "name": "action-ambient",
+        "value": "0 3px 10px rgba(0,0,0,0.09)",
+        "purpose": "Primary gradient ActionButton only."
+      },
+      {
+        "name": "create-elevation",
+        "value": "Flutter elevation 2",
+        "purpose": "Raised central mobile create circle; renderer-defined shadow."
+      },
+      {
+        "name": "sticky-material",
+        "value": "0 7px 18px rgba(247,222,160,0.3)",
+        "purpose": "Light-theme sticky material only; dark uses its butter counterpart."
+      }
+    ],
+    "motion": [
+      {
+        "name": "press-in",
+        "value": "90ms easeOutCubic; scale .97",
+        "purpose": "Pointer press acknowledgement."
+      },
+      {
+        "name": "press-return",
+        "value": "180ms easeOutCubic; scale 1",
+        "purpose": "Pointer release."
+      },
+      {
+        "name": "icon-feedback",
+        "value": "240ms; one sine pulse; lift 2px, rotate .12rad, scale 1.12",
+        "purpose": "Selected state only; immediate for keyboard and reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "community-columns",
+        "value": "700px available width"
+      },
+      {
+        "name": "desktop-rail",
+        "value": "1000px viewport width"
+      }
+    ],
+    "rampNote": "Synthesized OKLCH preview ramps preserve source hue/chroma and step lightness; actual production color primitives remain in DESIGN.md.",
+    "translationNote": "Self-contained HTML/CSS translations of Flutter styling, not production source. Hover states approximate Flutter ink feedback; complex BottomAppBar notch geometry and elevation remain Flutter-defined. Neutral preview ramps are achromatic approximations; DESIGN.md primitives remain normative."
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Flutter ActionButton visual translation.",
+      "html": "<button class=\"ds-primary\">Create post</button>",
+      "css": ".ds-primary{font:600 14px/1.4 \"DM Sans\",sans-serif;background:linear-gradient(to bottom,#FFFEFA,#E9E9E3);color:#202126;box-shadow:0 3px 10px rgba(0,0,0,.09);border:0;border-radius:16px;padding:14px 18px;transition:background .18s ease,transform .18s ease;}.ds-primary:hover{filter:brightness(1.06)}.ds-primary:focus-visible{outline:2px solid #25262B;outline-offset:3px}.ds-primary:active{transform:scale(.97)}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}.ds-primary:active{transform:none}}"
+    },
+    {
+      "name": "Secondary action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quiet secondary action using an 8% on-surface tint.",
+      "html": "<button class=\"ds-secondary\">Copy my data</button>",
+      "css": ".ds-secondary{font:600 14px/1.4 \"DM Sans\",sans-serif;background:rgba(25,27,36,.08);color:#191B24;border:0;border-radius:16px;padding:14px 18px;transition:background .18s ease,transform .18s ease;}.ds-secondary:hover{filter:brightness(.97)}.ds-secondary:focus-visible{outline:2px solid #25262B;outline-offset:3px}.ds-secondary:active{transform:scale(.97)}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}.ds-secondary:active{transform:none}}"
+    },
+    {
+      "name": "Search field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Filled input with functional focus feedback.",
+      "html": "<label class=\"ds-field-label\">Search spaces<input class=\"ds-field\" placeholder=\"Prayer topic or space\" /></label>",
+      "css": ".ds-field-label{display:grid;gap:8px;font:14px/1.5 \"DM Sans\",sans-serif;color:#191B24}.ds-field{font:16px/1.5 \"DM Sans\",sans-serif;background:#F0F1EE;color:#191B24;border:0;border-radius:16px;padding:16px}.ds-field:hover{background:#E9EBE6}.ds-field:focus-visible{outline:2px solid #25262B;outline-offset:0}"
+    },
+    {
+      "name": "Topic chip",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Borderless selected topic.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"true\">Hope</button>",
+      "css": ".ds-chip{font:14px/1.4 \"DM Sans\",sans-serif;background:#25262B;color:white;border:0;border-radius:999px;padding:10px;transition:background .18s ease,transform .18s ease;}.ds-chip:hover{filter:brightness(1.06)}.ds-chip:focus-visible{outline:2px solid #25262B;outline-offset:3px}.ds-chip:active{transform:scale(.97)}"
+    },
+    {
+      "name": "Paper prayer",
+      "kind": "card",
+      "refersTo": "post-paper",
+      "description": "Live writing on a quiet ruled material.",
+      "html": "<article class=\"ds-paper\"><h3>Hope for today</h3><p>Give us peace for the next step.</p><span>Hope</span></article>",
+      "css": ".ds-paper{padding:24px 24px 20px;background:repeating-linear-gradient(to bottom,transparent 0 27px,rgba(25,27,36,.06) 27px 28px),#EDF4FB;color:#191B24;border-radius:22px;font:16px/1.6 \"DM Sans\",sans-serif;max-width:460px}.ds-paper h3{margin:0 0 14px;font:600 25px/1.15 Outfit,sans-serif;letter-spacing:-.5px}.ds-paper p{margin:0 0 16px}.ds-paper span{font-size:12px;font-weight:600}"
+    },
+    {
+      "name": "Navigation selection",
+      "kind": "nav",
+      "refersTo": "navigation-selected",
+      "description": "Mobile dock destination: semantic name, white selected icon and dot. The actual Flutter dock has a center notch and raised FAB.",
+      "html": "<nav class=\"ds-nav\"><button class=\"ds-destination\" aria-current=\"page\" aria-label=\"Wall\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z\"/></svg><span class=\"ds-dot\"></span></button></nav>",
+      "css": ".ds-nav{display:inline-flex;background:#0D0E12;border-radius:32px;padding:0 6px;height:64px}.ds-destination{display:grid;justify-items:center;align-content:center;gap:5px;padding:10px 14px;background:transparent;color:white;border:0;border-radius:20px;transition:background .18s ease,transform .18s ease}.ds-dot{width:4px;height:4px;border-radius:50%;background:white}.ds-destination:hover{background:rgba(255,255,255,.08)}.ds-destination:focus-visible{outline:2px solid white;outline-offset:-3px}.ds-destination:active{transform:scale(.97)}@media(prefers-reduced-motion:reduce){.ds-destination{transition:none}.ds-destination:active{transform:none}}"
+    },
+    {
+      "name": "Raised create control",
+      "kind": "button",
+      "refersTo": "create-control",
+      "description": "Central circular Create post action, placed in the mobile dock notch by Flutter.",
+      "html": "<button class=\"ds-create\" aria-label=\"Create post\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 4v16M4 12h16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button>",
+      "css": ".ds-create{display:grid;place-items:center;width:56px;height:56px;border:0;border-radius:50%;background:#F9F9F3;color:#17181C;box-shadow:0 2px 4px #0003;transition:transform .18s ease}.ds-create:hover{filter:brightness(.97)}.ds-create:focus-visible{outline:2px solid #25262B;outline-offset:3px}.ds-create:active{transform:scale(.97)}@media(prefers-reduced-motion:reduce){.ds-create{transition:none}.ds-create:active{transform:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Prayer Wall",
+    "overview": "A personal, expressive prayer wall pairs soft graphic biblical artwork with tactile writing materials. Neutral and off-white controls give colorful content room to breathe; lilac, blue, butter, mint and peach give topics and communities visual character. Confident headings, clear author rows and readable prayer text carry the experience.\n\nThe owner-approved Option A dove is binding: an ivory silhouette, lavender teardrop wing, plum eyes, peach beak and olive sprig. Matching original stickers share broad 2D shapes and light shading. Preserve the incumbent Flutter app and local data; its visual system serves an honest local experience.",
+    "keyCharacteristics": [
+      "Expressive materials with live, selectable prayer text.",
+      "Soft graphic biblical art with a single approved dove identity.",
+      "Monochrome filled controls, colorful content and calm readable spacing.",
+      "Short state feedback with reduced-motion support."
+    ],
+    "rules": [
+      {
+        "name": "The Colorful Content Rule",
+        "body": "Keep essential controls monochrome; preserve topical, community and post-material color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Material Rule",
+        "body": "Match each material to its theme-specific fill and current theme ink; decoration must yield to readable live text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Material Depth Rule",
+        "body": "Keep depth local to its role: subtle action lift or sticky-paper tactility, never a hard offset shadow applied to every card.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** preserve the owner-approved Option A dove identity and matching soft graphic artwork.",
+      "**Do** keep readable live text central in every post material and theme.",
+      "**Do** use filled surfaces and functional focus feedback.",
+      "**Do** reduce decoration before clipping or shrinking large text.",
+      "**Do** use brief state feedback and respect reduced motion."
+    ],
+    "donts": [
+      "**Don't** add decorative borders to cards or buttons.",
+      "**Don't** replace the approved identity with toy renders or historical candidate mascots.",
+      "**Don't** turn a local sample interaction into a claim of public publication or membership.",
+      "**Don't** use continuous icon loops or pretend a static PNG is an articulated character."
+    ]
+  }
+}
