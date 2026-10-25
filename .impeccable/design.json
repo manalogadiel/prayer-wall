@@ -578,7 +578,7 @@
       }
     ],
     "rampNote": "Synthesized OKLCH preview ramps preserve source hue/chroma and step lightness; actual production color primitives remain in DESIGN.md.",
-    "translationNote": "Self-contained HTML/CSS translations of Flutter styling, not production source. Hover states approximate Flutter ink feedback; complex BottomAppBar notch geometry and elevation remain Flutter-defined. Neutral preview ramps are achromatic approximations; DESIGN.md primitives remain normative."
+    "translationNote": "Self-contained HTML/CSS translations of Flutter styling, not production source. Hover states approximate Flutter ink feedback; complex local DockClipper notch geometry and elevation remain Flutter-defined. Neutral preview ramps are achromatic approximations; DESIGN.md primitives remain normative."
   },
   "components": [
     {

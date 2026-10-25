@@ -202,31 +202,44 @@ class _HomePageState extends ConsumerState<HomePage>
     final scheme = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      floatingActionButton: wide
-          ? null
-          : FloatingActionButton(
-              tooltip: 'Create post',
-              onPressed: () => openPostComposer(context),
-              backgroundColor: const Color(0xFFF9F9F3),
-              foregroundColor: const Color(0xFF17181C),
-              shape: const CircleBorder(),
-              elevation: 2,
-              child: const Icon(CupertinoIcons.plus, size: 28)),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: wide
           ? null
           : Padding(
               padding: EdgeInsets.fromLTRB(
                   16, 0, 16, 12 + MediaQuery.paddingOf(context).bottom),
-              child: BottomAppBar(
-                  height: 64,
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
-                  color: const Color(0xFF0D0E12),
-                  surfaceTintColor: Colors.transparent,
-                  shape: const DockShape(),
-                  notchMargin: 6,
-                  clipBehavior: Clip.antiAlias,
-                  child: navigation(false))),
+              child: SizedBox(
+                  height: 92,
+                  child: Stack(clipBehavior: Clip.none, children: [
+                    Positioned(
+                        left: 0,
+                        right: 0,
+                        top: 28,
+                        height: 64,
+                        child: ClipPath(
+                            key: const ValueKey('prayer-dock'),
+                            clipper: const DockClipper(),
+                            child: Material(
+                                color: const Color(0xFF0D0E12),
+                                child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 6),
+                                    child: navigation(false))))),
+                    Align(
+                        alignment: Alignment.topCenter,
+                        child: SizedBox(
+                            width: 56,
+                            height: 56,
+                            child: FloatingActionButton(
+                                key: const ValueKey('dock-create'),
+                                tooltip: 'Create post',
+                                onPressed: () => openPostComposer(context),
+                                backgroundColor: const Color(0xFFF9F9F3),
+                                foregroundColor: const Color(0xFF17181C),
+                                shape: const CircleBorder(),
+                                elevation: 2,
+                                child: const Icon(CupertinoIcons.plus,
+                                    size: 28)))),
+                  ]))),
       body: SafeArea(
           child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         if (wide)
@@ -764,3 +777,14 @@ class DockShape extends NotchedShape {
   }
 }
 
+// Local coordinates keep the notch aligned when the whole dock is inset.
+class DockClipper extends CustomClipper<Path> {
+  const DockClipper();
+  @override
+  Path getClip(Size size) => const DockShape().getOuterPath(
+      Offset.zero & size,
+      Rect.fromCenter(
+          center: Offset(size.width / 2, 0), width: 68, height: 68));
+  @override
+  bool shouldReclip(DockClipper oldClipper) => false;
+}

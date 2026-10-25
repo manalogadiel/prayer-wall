@@ -57,3 +57,12 @@ Next agent: continue this Flutter app and its data; do not regenerate platforms 
 
 Owner evidence: reference 19. Removed the dock wrapper's 10px top padding, which offset the visible bar from Flutter's centerDocked anchor. Tightened notch margin to 6px. In the 390×844 browser capture, FAB bounds are x167/y740/56×56: its center y768 matches the visible dock top y768. Both themes captured in `.impeccable/review/dock-alignment-{light,dark}.png`. Twelve relevant widget tests passed; web release build passed (57.7s). This closes only the browser geometry defect; native acceptance remains open.
 Browser alignment review: SHIP for the two dock captures, no material alignment findings. Report: `.impeccable/review/dock-alignment-review.md`.
+
+
+### Shared-coordinate dock correction — supersedes padding-only fix
+
+The earlier vertical padding fix did not correct horizontal notch placement. Flutter BottomAppBar's private clipper translates Scaffold floatingActionButtonArea by bottomNavigationBarTop only (Y); our 16px outer horizontal inset leaves the notch 16px to the right of the button. Replaced the independent Scaffold FAB/BottomAppBar geometry with a local Stack containing the dock ClipPath and centered 56px create circle. Both now derive X from the same local width/2, and button center Y aligns with dock top at local 28px. Bottom system padding is applied once outside the component.
+
+All 17 tests passed, including 9 width/inset combinations (320/390/430 logical widths and 0/24/48 bottom insets), symmetric notch samples and precise center equality. Analysis has no issues. This supersedes the prior browser-only alignment claim. Phone ADB connection was offline/refused during investigation; device reinstall and native visual confirmation must be recorded separately when available.
+
+Shared-coordinate build results: current debug APK passed (17.8s), web release passed (34.1s), and browser click opened the composer. Current phone connection is unavailable (ADB device list empty), so this correction has not yet been installed. Downloadable APK is saved outside the repository as outputs/Prayer-Wall-debug.apk.

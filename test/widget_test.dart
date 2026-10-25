@@ -9,6 +9,7 @@ import 'package:prayer_wall/app/app.dart';
 import 'package:prayer_wall/core/store.dart';
 import 'package:prayer_wall/features/personal_widgets.dart';
 import 'package:prayer_wall/core/widgets.dart';
+import 'package:prayer_wall/features/home.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -308,6 +309,34 @@ void main() {
     expect(find.text('Here to pray.'), findsOneWidget);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());
+    debugDefaultTargetPlatformOverride = null;
+  });
+  testWidgets('Inset dock notch and create button share a center on Android',
+      (tester) async {
+    for (final width in [320.0, 390.0, 430.0]) {
+      for (final bottom in [0.0, 24.0, 48.0]) {
+        tester.view.padding = FakeViewPadding(bottom: bottom);
+        tester.view.viewPadding = FakeViewPadding(bottom: bottom);
+        await launch(tester, Size(width, 900));
+        final dock = tester.getRect(find.byKey(const ValueKey('prayer-dock')));
+        final button =
+            tester.getRect(find.byKey(const ValueKey('dock-create')));
+        expect(button.center.dx, closeTo(dock.center.dx, .01));
+        expect(button.center.dy, closeTo(dock.top, .01));
+        final path = const DockClipper().getClip(dock.size);
+        // The circular cutout must be symmetric around the actual button,
+        // even though the dock itself has a horizontal outer inset.
+        for (final x in [12.0, 24.0, 32.0, 40.0]) {
+          expect(path.contains(Offset(dock.width / 2 - x, 16)),
+              path.contains(Offset(dock.width / 2 + x, 16)));
+        }
+        expect(path.contains(Offset(dock.width / 2, 16)), false);
+        expect(tester.takeException(), isNull);
+        await tester.pumpWidget(const SizedBox());
+      }
+    }
+    tester.view.resetPadding();
+    tester.view.resetViewPadding();
     debugDefaultTargetPlatformOverride = null;
   });
 }

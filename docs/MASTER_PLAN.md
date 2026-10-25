@@ -311,7 +311,7 @@ DESIGN.md frontmatter is the normative extracted token record, including all pos
 
 ### 8.1 Navigation
 
-LOCKED current hierarchy: **Wall / Community / Prayers / Profile**. Wall launches first. Profile contains **Today / Journal / Saved**. No separate Discover primary tab. Mobile uses a black rounded 64px BottomAppBar with a real center notch and raised off-white Create post FAB. White selected icons/dot and gray inactive icons retain accessible semantic names/tooltips. At 1000 logical pixels use a 220px desktop rail with visible labels and neutral selection. Settings is available only from Profile. Current shell uses local page state; proposed future routes are not implemented deep links.
+LOCKED current hierarchy: **Wall / Community / Prayers / Profile**. Wall launches first. Profile contains **Today / Journal / Saved**. No separate Discover primary tab. Mobile uses a shared-coordinate Stack with a black rounded 64px clipped dock and raised off-white Create post circle; the notch and button use the same local center. White selected icons/dot and gray inactive icons retain accessible semantic names/tooltips. At 1000 logical pixels use a 220px desktop rail with visible labels and neutral selection. Settings is available only from Profile. Current shell uses local page state; proposed future routes are not implemented deep links.
 
 ### 8.2 Wall and local composer
 
@@ -598,3 +598,6 @@ Version 1.5, 2026-10-25: monochrome essential controls, black notched dock/raise
 
 
 Latest device delivery (2026-10-25): current debug APK build passed (58.6s) and ADB replacement install succeeded on Samsung SM-A326B, user 0. Prior dependency-download failure is historical. Native visual/widget acceptance remains separate and unverified.
+
+
+2026-10-25 dock correction: the padding-only fix was incomplete. The previous BottomAppBar clipper used full-screen X coordinates inside a horizontally inset dock. A local Stack/DockClipper now owns both notch and button; see IMPLEMENTATION_STATUS.md for diagnosis and nine geometry regression cases.
