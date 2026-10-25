@@ -8,7 +8,7 @@ Essential actions are neutral/off-white; content stays colorful. Bible-inspired 
 
 Profile starts with avatar left, editable name/bio right, Prayer partners / Fellowship empty sheets, then Today / Journal / Saved. No fabricated accounts/counts. Queued profile_v1 data, optional photo and export schemaVersion 4 remain device-local.
 
-Composer occupies 80% viewport height, scrolls above a pinned Publish / Save changes footer and accounts for keyboard insets. Topic follows title/body; material immediately precedes Preview. Five materials and biblical stickers remain; optional curated pastel overrides use dark live ink in either theme, and Sticky tape is stronger. Public default / Private audience and expiry are persisted choices. Publish is an on-device save; Settings explains missing backend rather than repeating badges across feed/composer/community.
+Composer occupies 80% viewport height, scrolls above a pinned Publish footer and accounts for keyboard insets. Topic follows title/body; material immediately precedes Preview. Five materials and biblical stickers remain; optional curated pastel overrides use dark live ink in either theme, and Sticky tape is stronger. Public default / Private audience and expiry are persisted choices. Publish is an on-device save; Settings explains missing backend rather than repeating badges across feed/composer/community.
 
 Posts keep stable IDs and link to Prayers with deduplication and title updates. Other posts expose a plus action. Archive removes linked widget inclusion; restore clears expiry without automatic re-pinning. Community contains Family, Young People and School Friends with search and local My spaces preferences. Private daily completion and explicit Answered remain distinct.
 

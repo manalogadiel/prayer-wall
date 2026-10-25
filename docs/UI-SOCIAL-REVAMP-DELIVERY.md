@@ -10,7 +10,7 @@ Bible-inspired attached page tabs replace detached pill switches in Community, P
 
 Profile places avatar left and editable name/bio right; Prayer partners and Fellowship open honest empty connection sheets, followed by Today / Journal / Saved. No fake connection counts or accounts. Optional local photo and dove fallback remain. Settings is only here and explains the missing public backend. Repeated sample/local labels were removed from feed, composer and communities at the owner's request.
 
-The composer is 80% viewport height, scrolls above a pinned Publish / Save changes footer, and follows keyboard insets. Topic follows title/body; material is immediately above Preview. Five writing materials, optional biblical sticker placement and live preview remain; curated pastel fills use dark charcoal live text even in dark theme. Sticky tape is stronger.
+The composer is 80% viewport height, scrolls above a pinned Publish footer, and follows keyboard insets. Topic follows title/body; material is immediately above Preview. Five writing materials, optional biblical sticker placement and live preview remain; curated pastel fills use dark charcoal live text even in dark theme. Sticky tape is stronger.
 
 Public is the default persisted audience choice; Private remains available. Publish still saves on this device. Expiry offers day, week, clamped calendar month, specific date or infinite; archive/restore are implemented. Stable post/prayer linkage keeps prayer titles current without duplicate entries; plus adds other posts to the prayer list. Archive removes widget inclusion; restore clears expiry and leaves re-pinning explicit. Daily completion and Answered remain independent.
 
